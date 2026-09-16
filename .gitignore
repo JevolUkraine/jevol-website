@@ -43,3 +43,12 @@ next-env.d.ts
 
 # source photo assets (not yet used in the site)
 /Photo/
+
+# local secrets / notes (never commit)
+/Pass storage supabase.txt
+
+# claude code local state
+/.claude/
+
+.vercel
+.env*
