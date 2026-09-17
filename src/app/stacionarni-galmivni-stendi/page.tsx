@@ -174,7 +174,9 @@ export default function StationaryBrakeStandsPage() {
                 Написати нам у WhatsApp
               </a>
               <a
-                href="https://drive.google.com/file/d/19nYXpb3KF4lUqGlXenEbnKPEQTJbQTW2/view?usp=drive_link"
+                href="https://tflgmyvvavucbmcawtzv.supabase.co/storage/v1/object/public/pdfs/JEVOL_%20RRT7500S.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-11 items-center justify-center border border-gray-300 px-6 text-xs font-medium uppercase text-gray-600"
               >
                 Завантажити PDF

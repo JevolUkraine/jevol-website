@@ -165,7 +165,9 @@ export default function PlayDetectorPage() {
                 Написати нам у WhatsApp
               </a>
               <a
-                href="https://drive.google.com/file/d/1jgN1Z6Ie897WEqGtd2yuL_3PCHLaq0tv/view?usp=drive_link"
+                href="https://tflgmyvvavucbmcawtzv.supabase.co/storage/v1/object/public/pdfs/JEVOL_PDT500_PDT800.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-11 items-center justify-center border border-gray-300 px-6 text-xs font-medium uppercase text-gray-600"
               >
                 Завантажити PDF

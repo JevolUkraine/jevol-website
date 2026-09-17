@@ -148,7 +148,9 @@ export default function Jve501Page() {
                 Написати нам у WhatsApp
               </a>
               <a
-                href="https://drive.google.com/file/d/1p5ubluafi4yHuHZ2nMORguOQq9-5AIEk/view?usp=drive_link"
+                href="https://tflgmyvvavucbmcawtzv.supabase.co/storage/v1/object/public/pdfs/Gas_JEVOL_%20JVE-501.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-11 items-center justify-center border border-gray-300 px-6 text-xs font-medium uppercase text-gray-600"
               >
                 Завантажити PDF
