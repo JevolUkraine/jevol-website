@@ -209,8 +209,7 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero */}
         <section className="mx-auto max-w-6xl px-4 py-10">
-          <HeroGallery photos={heroSlides} />
-          <div className="mt-6 flex flex-col items-start gap-3">
+          <div className="flex flex-col items-start gap-3">
             <h1 className="text-3xl font-semibold text-gray-900 sm:text-4xl">
               Сучасне високоточне обладнання для діагностики транспортних
               засобів
@@ -223,6 +222,9 @@ export default function Home() {
               Обладнання для техогляду в Україні — офіційний представник
               JEVOL.
             </p>
+          </div>
+          <div className="mt-6">
+            <HeroGallery photos={heroSlides} />
           </div>
         </section>
 
