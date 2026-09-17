@@ -45,7 +45,7 @@ export function HeroCarousel({ slides }: { slides: Slide[] }) {
       role="region"
       aria-roledescription="carousel"
       aria-label="Фотографії обладнання JEVOL"
-      className="group relative h-72 w-full overflow-hidden sm:h-96"
+      className="group relative h-72 w-full overflow-hidden bg-gray-900 sm:h-96"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       onTouchStart={onTouchStart}
@@ -63,7 +63,7 @@ export function HeroCarousel({ slides }: { slides: Slide[] }) {
             alt={slide.alt}
             fill
             priority={i === 0}
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width: 640px) 50vw, 100vw"
           />
         </div>
