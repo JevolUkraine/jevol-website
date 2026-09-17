@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
 import { ImgBox } from "@/components/wireframe/Box";
 import { ContactForm } from "@/components/ContactForm";
 import { categories } from "@/lib/categories";
+import { storageUrl } from "@/lib/storage";
 
 const TITLE =
   "Газоаналізатор JVE-501 — 5-канальний аналіз вихлопних газів для техогляду в Україні | JEVOL";
@@ -68,6 +70,20 @@ const specs = [
   { label: "Вага", value: "7 кг" },
 ];
 
+const STORAGE_BUCKET = "images";
+const STORAGE_FOLDER = "gazoanalizator-jve-501";
+const imageUrl = (path: string) =>
+  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
+
+const heroImage = {
+  path: "2.webp",
+  alt: "Газоаналізатор JVE-501 JEVOL на пересувному візку",
+};
+
+const galleryImages = [
+  { path: "1.webp", alt: "Комплекс JEVOL: газоаналізатор JVE-501 та димомір JVS-600" },
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -76,6 +92,7 @@ const jsonLd = {
       name: "Газоаналізатор JVE-501",
       description: DESCRIPTION,
       brand: { "@type": "Brand", name: "JEVOL" },
+      image: imageUrl(heroImage.path),
       url: URL,
       additionalProperty: specs.map((s) => ({
         "@type": "PropertyValue",
@@ -115,14 +132,29 @@ export default function Jve501Page() {
         {/* Product info block */}
         <section className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2">
           <div className="flex flex-col gap-3">
-            <ImgBox
-              label="gazoanalizator-dymom.webp — hero"
-              className="h-80 w-full sm:h-96"
-            />
-            <ImgBox
-              label="RRT-7500M.webp (mismatched source image — client will replace)"
-              className="h-24 w-full text-[10px]"
-            />
+            <div className="relative h-80 w-full overflow-hidden sm:h-96">
+              <Image
+                src={imageUrl(heroImage.path)}
+                alt={heroImage.alt}
+                fill
+                priority
+                className="object-cover"
+                sizes="(min-width: 640px) 50vw, 100vw"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {galleryImages.map((img) => (
+                <div key={img.path} className="relative h-24 w-full overflow-hidden">
+                  <Image
+                    src={imageUrl(img.path)}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                    sizes="240px"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="flex flex-col gap-4">
