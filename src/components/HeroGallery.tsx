@@ -27,21 +27,22 @@ export function HeroGallery({ photos }: { photos: Photo[] }) {
 
   return (
     <div>
-      {/* Photo grid */}
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-6">
+      {/* Photo masonry */}
+      <div className="columns-2 gap-2 sm:columns-4 lg:columns-6">
         {photos.map((photo, i) => (
           <button
             key={photo.src}
             type="button"
             onClick={() => setLightboxIndex(i)}
             aria-label={`Переглянути фото ${i + 1} на весь екран`}
-            className="relative aspect-square overflow-hidden"
+            className="mb-2 block w-full break-inside-avoid"
           >
             <Image
               src={photo.src}
               alt={photo.alt}
-              fill
-              className="object-cover"
+              width={photo.width}
+              height={photo.height}
+              className="h-auto w-full"
               sizes="(min-width: 1024px) 16vw, (min-width: 640px) 25vw, 50vw"
             />
           </button>
