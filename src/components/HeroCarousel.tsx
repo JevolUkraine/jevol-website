@@ -60,6 +60,14 @@ export function HeroCarousel({ slides }: { slides: Slide[] }) {
         >
           <Image
             src={slide.src}
+            alt=""
+            aria-hidden
+            fill
+            className="scale-110 object-cover opacity-60 blur-2xl"
+            sizes="100vw"
+          />
+          <Image
+            src={slide.src}
             alt={slide.alt}
             fill
             priority={i === 0}
