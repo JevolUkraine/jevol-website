@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
 import { ImgBox } from "@/components/wireframe/Box";
 import { ContactForm } from "@/components/ContactForm";
 import { categories } from "@/lib/categories";
+import { storageUrl } from "@/lib/storage";
 
 const TITLE =
   "Пересувні гальмівні стенди для техогляду — купити мобільний стенд в Україні | JEVOL";
@@ -73,15 +75,27 @@ const faqs = [
   },
 ];
 
+const STORAGE_BUCKET = "images";
+const STORAGE_FOLDER = "peresuvni-galmivni-stendi";
+const imageUrl = (path: string) =>
+  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
+
+const heroImage = {
+  path: "6 (1).webp",
+  alt: "Пересувний гальмівний стенд JEVOL RRT7500M — загальний вигляд",
+};
+
 const galleryImages = [
-  "foto3.jpg",
-  "IMG_4858.webp",
-  "IMG_1612.webp",
-  "IMG_1587.webp",
-  "RRT-7500M.webp",
-  "F8843F7D-F9D7-4483-B.webp",
-  "IMG_2394.webp",
-  "2.webp",
+  { path: "3.webp", alt: "Пересувний гальмівний стенд JEVOL — вигляд спереду" },
+  { path: "5 (1).webp", alt: "Тестування вантажівки на пересувному гальмівному стенді JEVOL" },
+  { path: "7.webp", alt: "Тестування легкового автомобіля на пересувному гальмівному стенді JEVOL" },
+  { path: "9.webp", alt: "Тестування паливної цистерни на пересувному гальмівному стенді JEVOL" },
+  { path: "4.webp", alt: "Пересувний гальмівний стенд JEVOL в лабораторії техогляду" },
+  { path: "2.webp", alt: "Встановлення пересувного гальмівного стенду JEVOL" },
+  { path: "foto3.webp", alt: "Пересувний гальмівний стенд JEVOL — вигляд зверху" },
+  { path: "10.webp", alt: "Пересувний гальмівний стенд JEVOL на СТО" },
+  { path: "8.webp", alt: "Пересувні гальмівні стенди JEVOL підготовлені до відвантаження" },
+  { path: "RRT-7500M.webp", alt: "Тестування вантажівки Mercedes Actros на пересувному гальмівному стенді JEVOL" },
 ];
 
 const jsonLd = {
@@ -93,6 +107,7 @@ const jsonLd = {
       description: DESCRIPTION,
       brand: { "@type": "Brand", name: "JEVOL" },
       url: URL,
+      image: imageUrl(heroImage.path),
     },
     {
       "@type": "FAQPage",
@@ -129,17 +144,27 @@ export default function MobileBrakeStandsPage() {
         <section className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2">
           {/* Image gallery */}
           <div className="flex flex-col gap-3">
-            <ImgBox
-              label="mobilnyy-galmivnyy-s.webp — hero"
-              className="h-80 w-full sm:h-96"
-            />
+            <div className="relative h-80 w-full overflow-hidden sm:h-96">
+              <Image
+                src={imageUrl(heroImage.path)}
+                alt={heroImage.alt}
+                fill
+                priority
+                className="object-cover"
+                sizes="(min-width: 640px) 50vw, 100vw"
+              />
+            </div>
             <div className="grid grid-cols-4 gap-3">
               {galleryImages.map((img) => (
-                <ImgBox
-                  key={img}
-                  label={img}
-                  className="h-16 w-full text-[9px]"
-                />
+                <div key={img.path} className="relative h-16 w-full overflow-hidden">
+                  <Image
+                    src={imageUrl(img.path)}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                    sizes="120px"
+                  />
+                </div>
               ))}
             </div>
           </div>
