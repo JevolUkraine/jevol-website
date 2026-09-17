@@ -41,8 +41,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# source photo assets (not yet used in the site)
+# source assets being migrated to Supabase Storage (not committed to git)
 /Photo/
+/ПДФ на сайт/
 
 # local secrets / notes (never commit)
 /Pass storage supabase.txt
