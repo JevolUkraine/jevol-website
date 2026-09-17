@@ -198,7 +198,7 @@ export default function MobileBrakeStandsPage() {
             <div className="mt-2 flex flex-wrap gap-3">
               <a
                 href="https://wa.me/380504709561"
-                className="inline-flex h-11 items-center justify-center border-2 border-dashed border-gray-400 bg-gray-200 px-6 text-xs font-medium uppercase text-gray-600"
+                className="inline-flex h-11 items-center justify-center bg-[#25D366] px-6 text-xs font-bold uppercase text-white transition-colors hover:bg-[#20BD5A]"
               >
                 Написати нам у WhatsApp
               </a>

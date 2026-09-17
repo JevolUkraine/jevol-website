@@ -23,7 +23,7 @@ export function Header() {
         </nav>
         <a
           href="https://wa.me/380504709561"
-          className="inline-flex h-10 shrink-0 items-center justify-center bg-orange-500 px-4 text-xs font-bold uppercase tracking-wide text-zinc-950 transition-colors hover:bg-orange-400 sm:px-5"
+          className="inline-flex h-10 shrink-0 items-center justify-center bg-[#25D366] px-4 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#20BD5A] sm:px-5"
         >
           WhatsApp
         </a>

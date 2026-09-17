@@ -194,7 +194,7 @@ function WhatsAppCta() {
   return (
     <a
       href="https://wa.me/380504709561"
-      className="inline-flex h-12 w-fit items-center justify-center bg-orange-500 px-8 text-sm font-bold uppercase tracking-wide text-zinc-950 transition-colors hover:bg-orange-400"
+      className="inline-flex h-12 w-fit items-center justify-center bg-[#25D366] px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#20BD5A]"
     >
       Написати нам у WhatsApp
     </a>
@@ -228,7 +228,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="https://wa.me/380504709561"
-                className="inline-flex h-14 items-center justify-center bg-teal-600 px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-teal-500"
+                className="inline-flex h-14 items-center justify-center bg-[#25D366] px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#20BD5A]"
               >
                 Написати нам у WhatsApp
               </a>

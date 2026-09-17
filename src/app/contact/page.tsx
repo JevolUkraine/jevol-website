@@ -56,7 +56,7 @@ export default function ContactPage() {
               <p className="text-lg">
                 <a
                   href="https://wa.me/380504709561"
-                  className="font-semibold text-green-600"
+                  className="font-semibold text-[#25D366] transition-colors hover:text-[#20BD5A]"
                 >
                   WhatsApp
                 </a>{" "}
