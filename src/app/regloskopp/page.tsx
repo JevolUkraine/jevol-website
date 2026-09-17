@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
 import { ImgBox } from "@/components/wireframe/Box";
 import { ContactForm } from "@/components/ContactForm";
 import { categories } from "@/lib/categories";
+import { storageUrl } from "@/lib/storage";
 
 const TITLE =
   "Реглоскоп JVH-M100 — контроль та налаштування світла фар для техогляду в Україні | JEVOL";
@@ -85,6 +87,23 @@ const specs = [
   },
 ];
 
+const STORAGE_BUCKET = "images";
+// Note: the real folder in Supabase Storage is "regloskop-jvh-m1oo" (typo'd
+// with letter "oo" instead of "00" when it was created) — using it as-is.
+const STORAGE_FOLDER = "regloskop-jvh-m1oo";
+const imageUrl = (path: string) =>
+  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
+
+const heroImage = {
+  path: "!IMG_3733.webp",
+  alt: "Реглоскоп JVH-M100 JEVOL — блок з екраном та лазерним наведенням",
+};
+
+const galleryImages = [
+  { path: "IMG-3ed9cc1a7c29d1e49a2340031c2e9dac-V.webp", alt: "Реглоскоп JVH-M100 JEVOL — вигляд спереду" },
+  { path: "IMG-753cc0fde3524d5c89e5a5bd5d04b13d-V.webp", alt: "Реглоскоп JVH-M100 JEVOL — вигляд збоку" },
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -93,6 +112,7 @@ const jsonLd = {
       name: "Реглоскоп JVH-M100",
       description: DESCRIPTION,
       brand: { "@type": "Brand", name: "JEVOL" },
+      image: imageUrl(heroImage.path),
       url: URL,
       additionalProperty: specs.map((s) => ({
         "@type": "PropertyValue",
@@ -132,11 +152,29 @@ export default function RegloskopPage() {
         {/* Product info block */}
         <section className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2">
           <div className="flex flex-col gap-3">
-            <ImgBox
-              label="gazoanalizator-dymom.webp — hero (mismatched source image — client will replace)"
-              className="h-80 w-full sm:h-96 text-[11px]"
-            />
-            <ImgBox label="IMG_2928.webp" className="h-24 w-full text-[10px]" />
+            <div className="relative h-80 w-full overflow-hidden sm:h-96">
+              <Image
+                src={imageUrl(heroImage.path)}
+                alt={heroImage.alt}
+                fill
+                priority
+                className="object-cover"
+                sizes="(min-width: 640px) 50vw, 100vw"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {galleryImages.map((img) => (
+                <div key={img.path} className="relative h-24 w-full overflow-hidden">
+                  <Image
+                    src={imageUrl(img.path)}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                    sizes="240px"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="flex flex-col gap-4">
