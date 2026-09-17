@@ -186,6 +186,10 @@ const heroSlides = [
   { path: "foto3.webp", alt: "Гальмівний стенд JEVOL, вигляд зверху", width: 533, height: 400 },
 ].map((s) => ({ src: heroImage(s.path), alt: s.alt, width: s.width, height: s.height }));
 
+// Curated for the homepage display: 5 (1).webp, 5.webp, exhibition.webp,
+// foto3.webp, IMG_7891.webp — indices into heroSlides above.
+const heroFeaturedIndices = [3, 11, 4, 12, 10];
+
 function WhatsAppCta() {
   return (
     <a
@@ -224,7 +228,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-6">
-            <HeroGallery photos={heroSlides} />
+            <HeroGallery photos={heroSlides} featuredIndices={heroFeaturedIndices} />
           </div>
         </section>
 

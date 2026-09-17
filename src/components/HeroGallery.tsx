@@ -5,7 +5,13 @@ import { useEffect, useState } from "react";
 
 type Photo = { src: string; alt: string; width: number; height: number };
 
-export function HeroGallery({ photos }: { photos: Photo[] }) {
+export function HeroGallery({
+  photos,
+  featuredIndices,
+}: {
+  photos: Photo[];
+  featuredIndices: number[];
+}) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const lightboxOpen = lightboxIndex !== null;
 
@@ -27,26 +33,37 @@ export function HeroGallery({ photos }: { photos: Photo[] }) {
 
   return (
     <div>
-      {/* Photo masonry */}
-      <div className="columns-2 gap-2 sm:columns-4 lg:columns-6">
-        {photos.map((photo, i) => (
-          <button
-            key={photo.src}
-            type="button"
-            onClick={() => setLightboxIndex(i)}
-            aria-label={`Переглянути фото ${i + 1} на весь екран`}
-            className="mb-2 block w-full break-inside-avoid"
-          >
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              width={photo.width}
-              height={photo.height}
-              className="h-auto w-full"
-              sizes="(min-width: 1024px) 16vw, (min-width: 640px) 25vw, 50vw"
-            />
-          </button>
-        ))}
+      {/* Curated photo row */}
+      <div className="flex flex-wrap justify-center gap-2">
+        {featuredIndices.map((idx) => {
+          const photo = photos[idx];
+          return (
+            <button
+              key={photo.src}
+              type="button"
+              onClick={() => setLightboxIndex(idx)}
+              aria-label={`Переглянути фото ${idx + 1} на весь екран`}
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                className="h-36 w-auto sm:h-48"
+              />
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-4 flex justify-center">
+        <button
+          type="button"
+          onClick={() => setLightboxIndex(0)}
+          className="text-sm font-medium text-gray-700 underline underline-offset-2 hover:text-gray-900"
+        >
+          Переглянути всі фото ({photos.length})
+        </button>
       </div>
 
       {/* Lightbox */}
