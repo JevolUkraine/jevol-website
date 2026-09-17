@@ -4,7 +4,9 @@ import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
 import { ImgBox } from "@/components/wireframe/Box";
 import { ContactForm } from "@/components/ContactForm";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { categories } from "@/lib/categories";
+import { storageUrl } from "@/lib/storage";
 
 const HOME_TITLE =
   "Обладнання для техогляду в Україні — гальмівні стенди, димоміри, газоаналізатори | JEVOL";
@@ -164,6 +166,26 @@ const diagnosticsFeatures = [
   },
 ];
 
+const HERO_BUCKET = "images";
+const HERO_FOLDER = "hero-gallery";
+const heroImage = (path: string) => storageUrl(HERO_BUCKET, `${HERO_FOLDER}/${path}`);
+
+const heroSlides = [
+  { path: "AutoTechService_7.webp", alt: "Стенд JEVOL на виставці «Все для техогляду»" },
+  { path: "RRT-7500M.webp", alt: "Тестування вантажівки Mercedes Actros на гальмівному стенді JEVOL" },
+  { path: "AutoTechService_3.webp", alt: "Стенд JEVOL на виставці «Все для техогляду 2020»" },
+  { path: "5 (1).webp", alt: "Тестування вантажівки на пересувному гальмівному стенді JEVOL" },
+  { path: "exhibition.webp", alt: "Відвідувачі на стенді JEVOL, виставка «Все для техогляду 2021»" },
+  { path: "10.webp", alt: "Гальмівний стенд JEVOL, встановлений у лабораторії техогляду" },
+  { path: "AutoTechService_5 (1).webp", alt: "Стенд JEVOL на виставці «Все для техогляду 2022»" },
+  { path: "3434.webp", alt: "Монтаж гальмівного стенду JEVOL в оглядовій ямі" },
+  { path: "2.webp", alt: "Встановлення пересувного гальмівного стенду JEVOL" },
+  { path: "AutoTechServise_6.webp", alt: "Мобільний гальмівний стенд JEVOL на виставці «Все для техогляду 2021»" },
+  { path: "IMG_7891.webp", alt: "Лінія технічного контролю з диспетчерською кабіною JEVOL" },
+  { path: "5.webp", alt: "Оглядова яма для гальмівного стенду JEVOL" },
+  { path: "foto3.webp", alt: "Гальмівний стенд JEVOL, вигляд зверху" },
+].map((s) => ({ src: heroImage(s.path), alt: s.alt }));
+
 function WhatsAppCta() {
   return (
     <a
@@ -187,10 +209,7 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero */}
         <section className="mx-auto max-w-6xl px-4 py-10">
-          <ImgBox
-            label="6d02985f-fddd-4bb3-8.JPG — roller brake tester close-up"
-            className="h-72 w-full sm:h-96"
-          />
+          <HeroCarousel slides={heroSlides} />
           <div className="mt-6 flex flex-col items-start gap-3">
             <h1 className="text-3xl font-semibold text-gray-900 sm:text-4xl">
               Сучасне високоточне обладнання для діагностики транспортних
