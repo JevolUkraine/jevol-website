@@ -49,7 +49,7 @@ export function HeroGallery({
                 alt={photo.alt}
                 width={photo.width}
                 height={photo.height}
-                className="h-36 w-auto sm:h-48"
+                className="h-36 w-auto border border-zinc-800 sm:h-48"
               />
             </button>
           );
@@ -60,7 +60,7 @@ export function HeroGallery({
         <button
           type="button"
           onClick={() => setLightboxIndex(0)}
-          className="text-sm font-medium text-gray-700 underline underline-offset-2 hover:text-gray-900"
+          className="text-sm font-bold uppercase tracking-wide text-orange-500 underline underline-offset-4 transition-colors hover:text-orange-400"
         >
           Переглянути всі фото ({photos.length})
         </button>

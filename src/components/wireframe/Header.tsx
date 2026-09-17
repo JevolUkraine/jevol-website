@@ -2,22 +2,28 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="border-b-2 border-dashed border-gray-400 bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
+    <header className="border-b border-zinc-800 bg-zinc-950">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:py-5">
         <Link
           href="/"
-          className="flex h-10 w-32 items-center justify-center border-2 border-dashed border-gray-400 bg-gray-200 text-xs font-medium uppercase text-gray-500"
+          className="text-xl font-extrabold tracking-tight text-white sm:text-2xl"
         >
-          JEVOL
+          JEVOL<span className="text-orange-500">.</span>
         </Link>
-        <nav className="hidden gap-6 text-sm text-gray-500 sm:flex">
-          <Link href="/">Головна</Link>
-          <Link href="/#categories">Прилади</Link>
-          <Link href="/contact">Контакти</Link>
+        <nav className="hidden gap-8 text-sm font-semibold uppercase tracking-wide text-zinc-400 sm:flex">
+          <Link href="/" className="transition-colors hover:text-white">
+            Головна
+          </Link>
+          <Link href="/#categories" className="transition-colors hover:text-white">
+            Прилади
+          </Link>
+          <Link href="/contact" className="transition-colors hover:text-white">
+            Контакти
+          </Link>
         </nav>
         <a
           href="https://wa.me/380504709561"
-          className="flex h-9 w-32 items-center justify-center border-2 border-dashed border-gray-400 bg-gray-200 text-center text-[11px] uppercase leading-tight text-gray-500"
+          className="inline-flex h-10 shrink-0 items-center justify-center bg-orange-500 px-4 text-xs font-bold uppercase tracking-wide text-zinc-950 transition-colors hover:bg-orange-400 sm:px-5"
         >
           WhatsApp
         </a>

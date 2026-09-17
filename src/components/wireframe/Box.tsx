@@ -7,7 +7,7 @@ export function ImgBox({
 }) {
   return (
     <div
-      className={`flex items-center justify-center border-2 border-dashed border-gray-400 bg-gray-200 text-xs font-medium uppercase tracking-wide text-gray-500 ${className}`}
+      className={`flex items-center justify-center border-2 border-dashed border-zinc-600 bg-zinc-800 text-xs font-bold uppercase tracking-wide text-zinc-400 ${className}`}
     >
       {label}
     </div>
@@ -15,5 +15,5 @@ export function ImgBox({
 }
 
 export function TextLine({ className = "" }: { className?: string }) {
-  return <div className={`rounded bg-gray-300 ${className}`} />;
+  return <div className={`rounded bg-zinc-300 ${className}`} />;
 }

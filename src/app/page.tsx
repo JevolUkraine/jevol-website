@@ -194,7 +194,7 @@ function WhatsAppCta() {
   return (
     <a
       href="https://wa.me/380504709561"
-      className="inline-flex h-11 w-fit items-center justify-center border-2 border-dashed border-gray-400 bg-gray-200 px-6 text-xs font-medium uppercase text-gray-600"
+      className="inline-flex h-12 w-fit items-center justify-center bg-orange-500 px-8 text-sm font-bold uppercase tracking-wide text-zinc-950 transition-colors hover:bg-orange-400"
     >
       Написати нам у WhatsApp
     </a>
@@ -212,162 +212,199 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="mx-auto max-w-6xl px-4 py-10">
-          <div className="flex flex-col items-start gap-3">
-            <h1 className="text-3xl font-semibold text-gray-900 sm:text-4xl">
+        <section className="bg-zinc-950">
+          <div className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-500">
+              Офіційний представник JEVOL в Україні
+            </p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl">
               Сучасне високоточне обладнання для діагностики транспортних
               засобів
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="mt-6 max-w-2xl text-lg text-zinc-300 sm:text-xl">
               Гальмівні стенди, детектор люфтів, газоаналізатор, димомір,
-              реглоскоп та додаткове обладнання.
+              реглоскоп та додаткове обладнання для техогляду.
             </p>
-            <p className="text-gray-500">
-              Обладнання для техогляду в Україні — офіційний представник
-              JEVOL.
-            </p>
-          </div>
-          <div className="mt-6">
-            <HeroGallery photos={heroSlides} featuredIndices={heroFeaturedIndices} />
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="https://wa.me/380504709561"
+                className="inline-flex h-14 items-center justify-center bg-orange-500 px-8 text-sm font-bold uppercase tracking-wide text-zinc-950 transition-colors hover:bg-orange-400"
+              >
+                Написати нам у WhatsApp
+              </a>
+              <a
+                href="#categories"
+                className="inline-flex h-14 items-center justify-center border-2 border-zinc-700 px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-white"
+              >
+                Переглянути прилади
+              </a>
+            </div>
+            <div className="mt-16">
+              <HeroGallery photos={heroSlides} featuredIndices={heroFeaturedIndices} />
+            </div>
           </div>
         </section>
 
         {/* Why JEVOL trust strip */}
-        <section className="mx-auto max-w-6xl px-4 py-10">
+        <section className="bg-white">
           <ImgBox
             label="AutoTechService_5_1.webp — JEVOL trade-show booth"
-            className="h-56 w-full sm:h-72"
+            className="h-64 w-full sm:h-96"
           />
-          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {trustItems.map((item) => (
-              <div key={item.title} className="flex flex-col gap-1">
-                <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.text}</p>
-              </div>
-            ))}
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+            <h2 className="max-w-2xl text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">
+              Чому обирають JEVOL
+            </h2>
+            <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
+              {trustItems.map((item, i) => (
+                <div key={item.title} className="flex gap-5">
+                  <span className="shrink-0 text-4xl font-black text-orange-500">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="text-lg font-bold text-zinc-950">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 text-zinc-600">{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Category grid */}
-        <section id="categories" className="mx-auto max-w-6xl px-4 py-10">
-          <h2 className="mb-6 text-xl font-semibold text-gray-900">
-            Прилади
-          </h2>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
-            {categories.map((cat) => (
-              <Link
-                key={cat.name}
-                href={cat.href}
-                className="flex flex-col gap-3"
-              >
-                <ImgBox label="Image" className="h-40 w-full" />
-                <span className="text-sm font-medium text-gray-700">
-                  {cat.name}
-                </span>
-              </Link>
-            ))}
+        <section id="categories" className="bg-zinc-50">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">
+              Прилади
+            </h2>
+            <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
+              {categories.map((cat) => (
+                <Link
+                  key={cat.name}
+                  href={cat.href}
+                  className="group relative block h-48 overflow-hidden border-2 border-transparent transition-colors hover:border-orange-500"
+                >
+                  <ImgBox label="Image" className="absolute inset-0 h-full w-full" />
+                  <div className="absolute inset-x-0 bottom-0 bg-zinc-950/80 px-4 py-3">
+                    <span className="text-sm font-bold uppercase tracking-wide text-white">
+                      {cat.name}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Brake stands */}
-        <section className="mx-auto max-w-6xl px-4 py-10">
+        <section className="bg-zinc-950">
           <ImgBox
             label="IMG_1612.webp — mobile brake stand testing a car"
-            className="h-56 w-full sm:h-72"
+            className="h-72 w-full sm:h-[28rem]"
           />
-          <h2 className="mt-6 text-2xl font-semibold text-gray-900">
-            Універсальні гальмівні стенди JEVOL — стаціонарні та пересувні
-            моделі для техогляду.
-          </h2>
-          <p className="mt-2 text-gray-600">
-            Гальмівні стенди JEVOL забезпечують повний комплекс вимірювань під
-            час проведення обов&apos;язкового технічного контролю
-            транспортних засобів в Україні.
-          </p>
-          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {brakeStandFeatures.map((item) => (
-              <div key={item.title} className="flex flex-col gap-1">
-                <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.text}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6">
-            <WhatsAppCta />
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+            <h2 className="max-w-3xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Універсальні гальмівні стенди JEVOL — стаціонарні та пересувні
+              моделі для техогляду.
+            </h2>
+            <p className="mt-4 max-w-2xl text-zinc-300">
+              Гальмівні стенди JEVOL забезпечують повний комплекс вимірювань
+              під час проведення обов&apos;язкового технічного контролю
+              транспортних засобів в Україні.
+            </p>
+            <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
+              {brakeStandFeatures.map((item) => (
+                <div key={item.title} className="border-l-2 border-orange-500 pl-4">
+                  <h3 className="font-bold text-white">{item.title}</h3>
+                  <p className="mt-1 text-sm text-zinc-400">{item.text}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10">
+              <WhatsAppCta />
+            </div>
           </div>
         </section>
 
         {/* Play detector */}
-        <section className="mx-auto max-w-6xl px-4 py-10">
+        <section className="bg-white">
           <ImgBox
             label="IMG_4858.webp — pit-mounted play-detector platform"
-            className="h-56 w-full sm:h-72"
+            className="h-72 w-full sm:h-[28rem]"
           />
-          <h2 className="mt-6 text-2xl font-semibold text-gray-900">
-            Детектор люфтів ходової частини JEVOL — діагностика підвіски для
-            техогляду
-          </h2>
-          <p className="mt-2 text-gray-600">
-            Детектор люфтів JEVOL (Play Detector) забезпечує точну та швидку
-            діагностику ходової частини транспортних засобів під час
-            проведення обов&apos;язкового технічного контролю в Україні.
-          </p>
-          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {playDetectorFeatures.map((item) => (
-              <div key={item.title} className="flex flex-col gap-1">
-                <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.text}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6">
-            <WhatsAppCta />
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+            <h2 className="max-w-3xl text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">
+              Детектор люфтів ходової частини JEVOL — діагностика підвіски
+              для техогляду
+            </h2>
+            <p className="mt-4 max-w-2xl text-zinc-600">
+              Детектор люфтів JEVOL (Play Detector) забезпечує точну та
+              швидку діагностику ходової частини транспортних засобів під час
+              проведення обов&apos;язкового технічного контролю в Україні.
+            </p>
+            <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
+              {playDetectorFeatures.map((item) => (
+                <div key={item.title} className="border-l-2 border-orange-500 pl-4">
+                  <h3 className="font-bold text-zinc-950">{item.title}</h3>
+                  <p className="mt-1 text-sm text-zinc-600">{item.text}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10">
+              <WhatsAppCta />
+            </div>
           </div>
         </section>
 
         {/* Diagnostics combo */}
-        <section className="mx-auto max-w-6xl px-4 py-10">
+        <section className="bg-zinc-950">
           <ImgBox
             label="fotoStacionar1.jpeg — pit-mounted test line"
-            className="h-56 w-full sm:h-72"
+            className="h-72 w-full sm:h-[28rem]"
           />
-          <h2 className="mt-6 text-2xl font-semibold text-gray-900">
-            Комплекс діагностичних приладів JEVOL — аналіз вихлопних газів та
-            контроль світла фар.
-          </h2>
-          <p className="mt-2 text-gray-600">
-            Повний комплекс приладів JEVOL для діагностики транспортних
-            засобів під час обов&apos;язкового технічного контролю в Україні.
-            Всі прилади працюють в єдиній системі та формують єдиний протокол
-            випробувань.
-          </p>
-          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {diagnosticsFeatures.map((item) => (
-              <div key={item.title} className="flex flex-col gap-1">
-                <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.text}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6">
-            <WhatsAppCta />
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+            <h2 className="max-w-3xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Комплекс діагностичних приладів JEVOL — аналіз вихлопних газів
+              та контроль світла фар.
+            </h2>
+            <p className="mt-4 max-w-2xl text-zinc-300">
+              Повний комплекс приладів JEVOL для діагностики транспортних
+              засобів під час обов&apos;язкового технічного контролю в
+              Україні. Всі прилади працюють в єдиній системі та формують
+              єдиний протокол випробувань.
+            </p>
+            <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
+              {diagnosticsFeatures.map((item) => (
+                <div key={item.title} className="border-l-2 border-orange-500 pl-4">
+                  <h3 className="font-bold text-white">{item.title}</h3>
+                  <p className="mt-1 text-sm text-zinc-400">{item.text}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10">
+              <WhatsAppCta />
+            </div>
           </div>
         </section>
 
         {/* Contact form */}
-        <section className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-10 sm:grid-cols-2">
-          <ImgBox
-            label="fotoPlant.webp — JEVOL factory floor (B&W)"
-            className="h-56 w-full sm:h-full"
-          />
-          <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-semibold text-gray-900">
-              Заповніть форму зворотного зв&apos;язку
-            </h2>
-            <p className="mb-2 text-gray-600">
-              Ми зв&apos;яжемось з вами для консультації
-            </p>
-            <ContactForm />
+        <section className="bg-white">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-16 sm:grid-cols-2 sm:py-20">
+            <ImgBox
+              label="fotoPlant.webp — JEVOL factory floor (B&W)"
+              className="h-64 w-full sm:h-full"
+            />
+            <div>
+              <h2 className="text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">
+                Заповніть форму зворотного зв&apos;язку
+              </h2>
+              <p className="mb-6 mt-3 text-zinc-600">
+                Ми зв&apos;яжемось з вами для консультації
+              </p>
+              <ContactForm />
+            </div>
           </div>
         </section>
       </main>
