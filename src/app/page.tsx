@@ -212,29 +212,29 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="bg-zinc-950">
+        <section className="bg-slate-900">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-500">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal-400">
               Офіційний представник JEVOL в Україні
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl">
               Сучасне високоточне обладнання для діагностики транспортних
               засобів
             </h1>
-            <p className="mt-6 max-w-2xl text-lg text-zinc-300 sm:text-xl">
+            <p className="mt-6 max-w-2xl text-lg text-slate-300 sm:text-xl">
               Гальмівні стенди, детектор люфтів, газоаналізатор, димомір,
               реглоскоп та додаткове обладнання для техогляду.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="https://wa.me/380504709561"
-                className="inline-flex h-14 items-center justify-center bg-orange-500 px-8 text-sm font-bold uppercase tracking-wide text-zinc-950 transition-colors hover:bg-orange-400"
+                className="inline-flex h-14 items-center justify-center bg-teal-600 px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-teal-500"
               >
                 Написати нам у WhatsApp
               </a>
               <a
                 href="#categories"
-                className="inline-flex h-14 items-center justify-center border-2 border-zinc-700 px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-white"
+                className="inline-flex h-14 items-center justify-center border-2 border-slate-700 px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-white"
               >
                 Переглянути прилади
               </a>

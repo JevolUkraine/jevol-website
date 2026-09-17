@@ -60,7 +60,7 @@ export function HeroGallery({
         <button
           type="button"
           onClick={() => setLightboxIndex(0)}
-          className="text-sm font-bold uppercase tracking-wide text-orange-500 underline underline-offset-4 transition-colors hover:text-orange-400"
+          className="text-sm font-bold uppercase tracking-wide text-teal-400 underline underline-offset-4 transition-colors hover:text-teal-300"
         >
           Переглянути всі фото ({photos.length})
         </button>
