@@ -171,20 +171,20 @@ const HERO_FOLDER = "hero-gallery";
 const heroImage = (path: string) => storageUrl(HERO_BUCKET, `${HERO_FOLDER}/${path}`);
 
 const heroSlides = [
-  { path: "AutoTechService_7.webp", alt: "Стенд JEVOL на виставці «Все для техогляду»" },
-  { path: "RRT-7500M.webp", alt: "Тестування вантажівки Mercedes Actros на гальмівному стенді JEVOL" },
-  { path: "AutoTechService_3.webp", alt: "Стенд JEVOL на виставці «Все для техогляду 2020»" },
-  { path: "5 (1).webp", alt: "Тестування вантажівки на пересувному гальмівному стенді JEVOL" },
-  { path: "exhibition.webp", alt: "Відвідувачі на стенді JEVOL, виставка «Все для техогляду 2021»" },
-  { path: "10.webp", alt: "Гальмівний стенд JEVOL, встановлений у лабораторії техогляду" },
-  { path: "AutoTechService_5 (1).webp", alt: "Стенд JEVOL на виставці «Все для техогляду 2022»" },
-  { path: "3434.webp", alt: "Монтаж гальмівного стенду JEVOL в оглядовій ямі" },
-  { path: "2.webp", alt: "Встановлення пересувного гальмівного стенду JEVOL" },
-  { path: "AutoTechServise_6.webp", alt: "Мобільний гальмівний стенд JEVOL на виставці «Все для техогляду 2021»" },
-  { path: "IMG_7891.webp", alt: "Лінія технічного контролю з диспетчерською кабіною JEVOL" },
-  { path: "5.webp", alt: "Оглядова яма для гальмівного стенду JEVOL" },
-  { path: "foto3.webp", alt: "Гальмівний стенд JEVOL, вигляд зверху" },
-].map((s) => ({ src: heroImage(s.path), alt: s.alt }));
+  { path: "AutoTechService_7.webp", alt: "Стенд JEVOL на виставці «Все для техогляду»", width: 4032, height: 3024 },
+  { path: "RRT-7500M.webp", alt: "Тестування вантажівки Mercedes Actros на гальмівному стенді JEVOL", width: 817, height: 647 },
+  { path: "AutoTechService_3.webp", alt: "Стенд JEVOL на виставці «Все для техогляду 2020»", width: 5333, height: 3000 },
+  { path: "5 (1).webp", alt: "Тестування вантажівки на пересувному гальмівному стенді JEVOL", width: 4032, height: 3024 },
+  { path: "exhibition.webp", alt: "Відвідувачі на стенді JEVOL, виставка «Все для техогляду 2021»", width: 960, height: 712 },
+  { path: "10.webp", alt: "Гальмівний стенд JEVOL, встановлений у лабораторії техогляду", width: 4032, height: 3024 },
+  { path: "AutoTechService_5 (1).webp", alt: "Стенд JEVOL на виставці «Все для техогляду 2022»", width: 4032, height: 3024 },
+  { path: "3434.webp", alt: "Монтаж гальмівного стенду JEVOL в оглядовій ямі", width: 4032, height: 3024 },
+  { path: "2.webp", alt: "Встановлення пересувного гальмівного стенду JEVOL", width: 1348, height: 1011 },
+  { path: "AutoTechServise_6.webp", alt: "Мобільний гальмівний стенд JEVOL на виставці «Все для техогляду 2021»", width: 4032, height: 3024 },
+  { path: "IMG_7891.webp", alt: "Лінія технічного контролю з диспетчерською кабіною JEVOL", width: 4032, height: 3024 },
+  { path: "5.webp", alt: "Оглядова яма для гальмівного стенду JEVOL", width: 4032, height: 3024 },
+  { path: "foto3.webp", alt: "Гальмівний стенд JEVOL, вигляд зверху", width: 533, height: 400 },
+].map((s) => ({ src: heroImage(s.path), alt: s.alt, width: s.width, height: s.height }));
 
 function WhatsAppCta() {
   return (

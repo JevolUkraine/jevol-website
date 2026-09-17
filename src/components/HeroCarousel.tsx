@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-type Slide = { src: string; alt: string };
+type Slide = { src: string; alt: string; width: number; height: number };
 
 const AUTOPLAY_MS = 4500;
 const SWIPE_THRESHOLD_PX = 50;
@@ -40,42 +40,28 @@ export function HeroCarousel({ slides }: { slides: Slide[] }) {
     touchStartX.current = null;
   }
 
+  const slide = slides[index];
+
   return (
     <div
       role="region"
       aria-roledescription="carousel"
       aria-label="Фотографії обладнання JEVOL"
-      className="group relative h-72 w-full overflow-hidden bg-gray-900 sm:h-96"
+      className="group relative mx-auto w-fit max-w-full"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
-      {slides.map((slide, i) => (
-        <div
-          key={slide.src}
-          className="absolute inset-0 transition-opacity duration-700"
-          style={{ opacity: i === index ? 1 : 0 }}
-          aria-hidden={i !== index}
-        >
-          <Image
-            src={slide.src}
-            alt=""
-            aria-hidden
-            fill
-            className="scale-110 object-cover opacity-60 blur-2xl"
-            sizes="100vw"
-          />
-          <Image
-            src={slide.src}
-            alt={slide.alt}
-            fill
-            priority={i === 0}
-            className="object-contain"
-            sizes="(min-width: 640px) 50vw, 100vw"
-          />
-        </div>
-      ))}
+      <Image
+        key={slide.src}
+        src={slide.src}
+        alt={slide.alt}
+        width={slide.width}
+        height={slide.height}
+        priority={index === 0}
+        className="h-auto max-h-[32rem] w-auto max-w-full"
+      />
 
       {slides.length > 1 && (
         <>
@@ -98,9 +84,9 @@ export function HeroCarousel({ slides }: { slides: Slide[] }) {
 
           {slides.length <= DOT_THRESHOLD ? (
             <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
-              {slides.map((slide, i) => (
+              {slides.map((s, i) => (
                 <button
-                  key={slide.src}
+                  key={s.src}
                   type="button"
                   onClick={() => goTo(i)}
                   aria-label={`Перейти до фото ${i + 1}`}
