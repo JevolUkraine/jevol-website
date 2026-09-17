@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
 import { ImgBox } from "@/components/wireframe/Box";
 import { ContactForm } from "@/components/ContactForm";
 import { categories } from "@/lib/categories";
+import { storageUrl } from "@/lib/storage";
 
 const TITLE = "Гальмівний стенд для техогляду RRT7500S — купити в Україні | JEVOL";
 const DESCRIPTION =
@@ -79,14 +81,27 @@ const faqs = [
   },
 ];
 
+const STORAGE_BUCKET = "images";
+const STORAGE_FOLDER = "stacionarni-galmivni-stendi";
+const imageUrl = (path: string) =>
+  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
+
+const heroImage = {
+  path: "6.webp",
+  alt: "Стаціонарний гальмівний стенд JEVOL RRT7500S — загальний вигляд",
+};
+
 const galleryImages = [
-  "061019E6-E4FB-4250-A.webp",
-  "65B04B72-679C-4356-A.webp",
-  "IMG_7891.webp",
-  "6d02985f-fddd-4bb3-8.webp",
-  "IMG-5650.webp",
-  "626110EF-2BB0-43E9-A.webp",
-  "IMG_1520.webp",
+  { path: "343434.webp", alt: "Тестування Volkswagen Tiguan на стаціонарному гальмівному стенді JEVOL" },
+  { path: "1.webp", alt: "Стаціонарний гальмівний стенд JEVOL — вигляд зверху" },
+  { path: "23.webp", alt: "Стаціонарний гальмівний стенд JEVOL — деталь роликів" },
+  { path: "IMG_1520.webp", alt: "Пітний монтаж стаціонарного гальмівного стенду JEVOL" },
+  { path: "3333.webp", alt: "Лінія технічного контролю зі стаціонарним гальмівним стендом JEVOL" },
+  { path: "3434.webp", alt: "Монтаж стаціонарного гальмівного стенду JEVOL в оглядовій ямі" },
+  { path: "5.webp", alt: "Оглядова яма для стаціонарного гальмівного стенду JEVOL" },
+  { path: "63.webp", alt: "Лабораторія техогляду зі стаціонарним гальмівним стендом JEVOL" },
+  { path: "IMG-1544.webp", alt: "Встановлення лабораторії техогляду з гальмівним стендом JEVOL" },
+  { path: "IMG_7891.webp", alt: "Лінія технічного контролю з диспетчерською кабіною JEVOL" },
 ];
 
 const jsonLd = {
@@ -98,6 +113,7 @@ const jsonLd = {
       description: DESCRIPTION,
       brand: { "@type": "Brand", name: "JEVOL" },
       url: URL,
+      image: imageUrl(heroImage.path),
     },
     {
       "@type": "FAQPage",
@@ -134,13 +150,27 @@ export default function StationaryBrakeStandsPage() {
         <section className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2">
           {/* Image gallery */}
           <div className="flex flex-col gap-3">
-            <ImgBox
-              label="galmivnyy-stend-dlya.webp — hero"
-              className="h-80 w-full sm:h-96"
-            />
+            <div className="relative h-80 w-full overflow-hidden sm:h-96">
+              <Image
+                src={imageUrl(heroImage.path)}
+                alt={heroImage.alt}
+                fill
+                priority
+                className="object-cover"
+                sizes="(min-width: 640px) 50vw, 100vw"
+              />
+            </div>
             <div className="grid grid-cols-4 gap-3">
               {galleryImages.map((img) => (
-                <ImgBox key={img} label={img} className="h-16 w-full text-[9px]" />
+                <div key={img.path} className="relative h-16 w-full overflow-hidden">
+                  <Image
+                    src={imageUrl(img.path)}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                    sizes="120px"
+                  />
+                </div>
               ))}
             </div>
           </div>
