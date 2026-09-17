@@ -212,16 +212,16 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="bg-slate-900">
+        <section className="bg-[rgb(116,116,116)]">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-400">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-200">
               Офіційний представник JEVOL в Україні
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl">
               Сучасне високоточне обладнання для діагностики транспортних
               засобів
             </h1>
-            <p className="mt-6 max-w-2xl text-lg text-slate-300 sm:text-xl">
+            <p className="mt-6 max-w-2xl text-lg text-gray-100 sm:text-xl">
               Гальмівні стенди, детектор люфтів, газоаналізатор, димомір,
               реглоскоп та додаткове обладнання для техогляду.
             </p>
