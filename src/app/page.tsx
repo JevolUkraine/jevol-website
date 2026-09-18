@@ -339,10 +339,6 @@ export default function Home() {
 
         {/* Brake stands */}
         <section className="bg-zinc-950">
-          <ImgBox
-            label="IMG_1612.webp — mobile brake stand testing a car"
-            className="h-72 w-full sm:h-[28rem]"
-          />
           <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
             <h2 className="max-w-3xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               Універсальні гальмівні стенди JEVOL — стаціонарні та пересувні
