@@ -236,8 +236,8 @@ export default function Jvs600Page() {
                   className="group relative block h-40 overflow-hidden shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
                 >
                   <ImgBox label="Image" className="absolute inset-0 h-full w-full transition-transform duration-300 group-hover:scale-105" />
-                  <div className="absolute inset-x-0 bottom-0 bg-zinc-950/80 px-3 py-2">
-                    <span className="text-xs font-bold uppercase tracking-wide text-white">
+                  <div className="absolute inset-x-0 bottom-0 flex h-14 items-center bg-zinc-950/80 px-3">
+                    <span className="line-clamp-2 text-xs font-bold uppercase leading-tight tracking-wide text-white">
                       {cat.name}
                     </span>
                   </div>
