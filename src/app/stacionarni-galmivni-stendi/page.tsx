@@ -226,7 +226,7 @@ export default function StationaryBrakeStandsPage() {
 
         {/* FAQ / technical specs */}
         <section className="bg-zinc-950">
-          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+          <div className="mx-auto max-w-6xl px-4 pb-16 sm:pb-20">
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               Технічні характеристики гальмівного стенду RRT7500S
             </h2>
