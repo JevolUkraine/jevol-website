@@ -201,23 +201,6 @@ export default function MobileBrakeStandsPage() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="bg-zinc-950">
-          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Технічні характеристики пересувного гальмівного стенду JEVOL
-            </h2>
-            <div className="mt-10 flex flex-col divide-y divide-zinc-800">
-              {faqs.map((f) => (
-                <div key={f.question} className="py-6">
-                  <h3 className="font-bold text-white">{f.question}</h3>
-                  <p className="mt-2 text-sm text-zinc-400">{f.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Photo gallery */}
         <section className="bg-zinc-950 py-12 sm:py-16">
           <div className="mx-auto max-w-6xl px-4">
@@ -234,6 +217,23 @@ export default function MobileBrakeStandsPage() {
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                     sizes="(min-width: 1024px) 20vw, (min-width: 640px) 25vw, 50vw"
                   />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ / technical specs */}
+        <section className="bg-zinc-950">
+          <div className="mx-auto max-w-6xl px-4 pb-16 sm:pb-20">
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Технічні характеристики пересувного гальмівного стенду JEVOL
+            </h2>
+            <div className="mt-10 flex flex-col divide-y divide-zinc-800">
+              {faqs.map((f) => (
+                <div key={f.question} className="py-6">
+                  <h3 className="font-bold text-white">{f.question}</h3>
+                  <p className="mt-2 text-sm text-zinc-400">{f.answer}</p>
                 </div>
               ))}
             </div>

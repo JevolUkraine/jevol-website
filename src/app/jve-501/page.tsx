@@ -180,26 +180,6 @@ export default function Jve501Page() {
           </div>
         </section>
 
-        {/* Technical specs table */}
-        <section className="bg-zinc-950">
-          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Загальні технічні параметри
-            </h2>
-            <dl className="mt-10 grid grid-cols-1 gap-x-8 gap-y-1 sm:grid-cols-2">
-              {specs.map((s) => (
-                <div
-                  key={s.label}
-                  className="flex justify-between border-b border-zinc-800 py-3 text-sm"
-                >
-                  <dt className="text-zinc-400">{s.label}</dt>
-                  <dd className="font-bold text-white">{s.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </section>
-
         {/* Photo gallery */}
         <section className="bg-zinc-950 py-12 sm:py-16">
           <div className="mx-auto max-w-6xl px-4">
@@ -219,6 +199,26 @@ export default function Jve501Page() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Technical specs table */}
+        <section className="bg-zinc-950">
+          <div className="mx-auto max-w-6xl px-4 pb-16 sm:pb-20">
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Загальні технічні параметри
+            </h2>
+            <dl className="mt-10 grid grid-cols-1 gap-x-8 gap-y-1 sm:grid-cols-2">
+              {specs.map((s) => (
+                <div
+                  key={s.label}
+                  className="flex justify-between border-b border-zinc-800 py-3 text-sm"
+                >
+                  <dt className="text-zinc-400">{s.label}</dt>
+                  <dd className="font-bold text-white">{s.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </section>
 

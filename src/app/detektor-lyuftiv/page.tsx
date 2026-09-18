@@ -203,9 +203,31 @@ export default function PlayDetectorPage() {
           </div>
         </section>
 
+        {/* Photo gallery */}
+        <section className="bg-zinc-950 py-12 sm:py-16">
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {galleryImages.map((img) => (
+                <div
+                  key={img.path}
+                  className="group relative aspect-[4/3] overflow-hidden shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
+                >
+                  <Image
+                    src={imageUrl(img.path)}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(min-width: 640px) 25vw, 50vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Model comparison table */}
         <section className="bg-zinc-950">
-          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+          <div className="mx-auto max-w-6xl px-4 pb-16 sm:pb-20">
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               Технічні параметри: PDT-500 та PDT-800
             </h2>
@@ -236,28 +258,6 @@ export default function PlayDetectorPage() {
                   ))}
                 </tbody>
               </table>
-            </div>
-          </div>
-        </section>
-
-        {/* Photo gallery */}
-        <section className="bg-zinc-950 py-12 sm:py-16">
-          <div className="mx-auto max-w-6xl px-4">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {galleryImages.map((img) => (
-                <div
-                  key={img.path}
-                  className="group relative aspect-[4/3] overflow-hidden shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
-                >
-                  <Image
-                    src={imageUrl(img.path)}
-                    alt={img.alt}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(min-width: 640px) 25vw, 50vw"
-                  />
-                </div>
-              ))}
             </div>
           </div>
         </section>
