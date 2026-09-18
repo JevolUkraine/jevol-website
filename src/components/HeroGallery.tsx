@@ -43,7 +43,7 @@ export function HeroGallery({
               type="button"
               onClick={() => setLightboxIndex(idx)}
               aria-label={`Переглянути фото ${idx + 1} на весь екран`}
-              className="relative aspect-[4/3] overflow-hidden border border-zinc-800"
+              className="relative aspect-[4/3] overflow-hidden border border-zinc-800 shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
             >
               <Image
                 src={photo.src}
@@ -61,7 +61,7 @@ export function HeroGallery({
         <button
           type="button"
           onClick={() => setLightboxIndex(0)}
-          className="text-sm font-bold uppercase tracking-wide text-teal-400 underline underline-offset-4 transition-colors hover:text-teal-300"
+          className="text-sm font-bold uppercase tracking-wide text-white underline underline-offset-4 transition-colors hover:text-gray-300"
         >
           Переглянути всі фото ({photos.length})
         </button>
