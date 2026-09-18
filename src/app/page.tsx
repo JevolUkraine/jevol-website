@@ -257,10 +257,6 @@ export default function Home() {
 
         {/* Why JEVOL trust strip */}
         <section className="bg-white">
-          <ImgBox
-            label="AutoTechService_5_1.webp — JEVOL trade-show booth"
-            className="h-64 w-full sm:h-96"
-          />
           <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
             <h2 className="max-w-2xl text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">
               Чому обирають JEVOL
