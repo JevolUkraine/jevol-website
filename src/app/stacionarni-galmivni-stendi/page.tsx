@@ -252,9 +252,9 @@ export default function StationaryBrakeStandsPage() {
                 <Link
                   key={cat.name}
                   href={cat.href}
-                  className="group relative block h-40 overflow-hidden border-2 border-transparent transition-colors hover:border-orange-500"
+                  className="group relative block h-40 overflow-hidden shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
                 >
-                  <ImgBox label="Image" className="absolute inset-0 h-full w-full" />
+                  <ImgBox label="Image" className="absolute inset-0 h-full w-full transition-transform duration-300 group-hover:scale-105" />
                   <div className="absolute inset-x-0 bottom-0 bg-zinc-950/80 px-3 py-2">
                     <span className="text-xs font-bold uppercase tracking-wide text-white">
                       {cat.name}
