@@ -143,62 +143,37 @@ export default function RegloskopPage() {
       <Header />
 
       <main className="flex-1">
-        {/* Breadcrumb */}
-        <div className="mx-auto max-w-6xl px-4 pt-6 text-xs text-gray-400">
-          <Link href="/">Головна</Link> / <span>Прилади</span> /{" "}
-          <span className="text-gray-600">Реглоскоп</span>
-        </div>
-
-        {/* Product info block */}
-        <section className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2">
-          <div className="flex flex-col gap-3">
-            <div className="relative h-80 w-full overflow-hidden sm:h-96">
-              <Image
-                src={imageUrl(heroImage.path)}
-                alt={heroImage.alt}
-                fill
-                priority
-                className="object-cover"
-                sizes="(min-width: 640px) 50vw, 100vw"
-              />
+        {/* Photo header */}
+        <section className="relative flex min-h-[60vh] items-center overflow-hidden bg-[rgb(116,116,116)]">
+          <Image
+            src={imageUrl(heroImage.path)}
+            alt=""
+            aria-hidden
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+          <div className="relative mx-auto max-w-6xl px-4 py-16">
+            <div className="text-xs text-gray-300">
+              <Link href="/" className="hover:text-white">
+                Головна
+              </Link>{" "}
+              / <span>Прилади</span> /{" "}
+              <span className="text-white">Реглоскоп</span>
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              {galleryImages.map((img) => (
-                <div key={img.path} className="relative h-24 w-full overflow-hidden">
-                  <Image
-                    src={imageUrl(img.path)}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                    sizes="240px"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <h1 className="text-2xl font-semibold text-gray-900">
+            <h1 className="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
               ПРИЛАД НАЛАШТУВАННЯ СВІТЛА ФАР - РЕГЛОСКОП (Фотометр) JVH-M100
             </h1>
-            <p className="text-gray-600">
+            <p className="mt-4 max-w-2xl text-lg text-gray-100">
               Реглоскоп JVH-M100 — контроль та налаштування світла фар для
               техогляду в Україні.
             </p>
-            <div className="flex flex-col gap-3 pt-2">
-              {faqs.map((f) => (
-                <div key={f.question}>
-                  <h2 className="font-semibold text-gray-900">
-                    {f.question}
-                  </h2>
-                  <p className="text-sm text-gray-600">{f.answer}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-2 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="https://wa.me/380504709561"
-                className="inline-flex h-11 items-center justify-center bg-[#25D366] px-6 text-xs font-bold uppercase text-white transition-colors hover:bg-[#20BD5A]"
+                className="inline-flex h-12 items-center justify-center bg-[#25D366] px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#20BD5A]"
               >
                 Написати нам у WhatsApp
               </a>
@@ -206,7 +181,7 @@ export default function RegloskopPage() {
                 href="https://tflgmyvvavucbmcawtzv.supabase.co/storage/v1/object/public/pdfs/JEVOL_JVH_M100.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center justify-center border border-gray-300 px-6 text-xs font-medium uppercase text-gray-600"
+                className="inline-flex h-12 items-center justify-center border-2 border-white/40 px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-white"
               >
                 Завантажити PDF
               </a>
@@ -214,64 +189,109 @@ export default function RegloskopPage() {
           </div>
         </section>
 
+        {/* Photo gallery */}
+        <section className="bg-zinc-950 py-12 sm:py-16">
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {galleryImages.map((img) => (
+                <div
+                  key={img.path}
+                  className="relative aspect-[4/3] overflow-hidden"
+                >
+                  <Image
+                    src={imageUrl(img.path)}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 640px) 25vw, 50vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="bg-white">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+            <div className="grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
+              {faqs.map((f) => (
+                <div key={f.question} className="border-l-2 border-orange-500 pl-4">
+                  <h2 className="font-bold text-zinc-950">{f.question}</h2>
+                  <p className="mt-1 text-sm text-zinc-600">{f.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Technical specs */}
-        <section className="mx-auto max-w-6xl px-4 py-10">
-          <h2 className="mb-2 text-xl font-semibold text-gray-900">
-            Технічні параметри реглоскопа JVH-M100
-          </h2>
-          <p className="mb-6 text-sm text-gray-600">
-            Реглоскоп JVH-M100 розроблений для точних вимірювань світлотехніки
-            транспортних засобів в умовах акредитованої лабораторії технічного
-            контролю відповідно до вимог ДСТУ 3649:2010 та ISO/IEC 17025:2017.
-          </p>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {specs.map((s) => (
-              <div key={s.title}>
-                <h3 className="font-medium text-gray-900">
-                  {s.title} —{" "}
-                  <span className="font-semibold">{s.range}</span>
-                </h3>
-                <p className="text-sm text-gray-600">{s.text}</p>
-              </div>
-            ))}
+        <section className="bg-zinc-950">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Технічні параметри реглоскопа JVH-M100
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm text-zinc-400">
+              Реглоскоп JVH-M100 розроблений для точних вимірювань
+              світлотехніки транспортних засобів в умовах акредитованої
+              лабораторії технічного контролю відповідно до вимог ДСТУ
+              3649:2010 та ISO/IEC 17025:2017.
+            </p>
+            <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
+              {specs.map((s) => (
+                <div key={s.title} className="border-l-2 border-orange-500 pl-4">
+                  <h3 className="font-bold text-white">
+                    {s.title} —{" "}
+                    <span className="text-orange-400">{s.range}</span>
+                  </h3>
+                  <p className="mt-1 text-sm text-zinc-400">{s.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Related products */}
-        <section className="mx-auto max-w-6xl px-4 py-10">
-          <h2 className="mb-6 text-xl font-semibold text-gray-900">
-            Інші прилади
-          </h2>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-5">
-            {relatedCategories.map((cat) => (
-              <Link
-                key={cat.name}
-                href={cat.href}
-                className="flex flex-col gap-3"
-              >
-                <ImgBox label="Image" className="h-32 w-full" />
-                <span className="text-sm font-medium text-gray-700">
-                  {cat.name}
-                </span>
-              </Link>
-            ))}
+        <section className="bg-zinc-50">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">
+              Інші прилади
+            </h2>
+            <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-5">
+              {relatedCategories.map((cat) => (
+                <Link
+                  key={cat.name}
+                  href={cat.href}
+                  className="group relative block h-40 overflow-hidden border-2 border-transparent transition-colors hover:border-orange-500"
+                >
+                  <ImgBox label="Image" className="absolute inset-0 h-full w-full" />
+                  <div className="absolute inset-x-0 bottom-0 bg-zinc-950/80 px-3 py-2">
+                    <span className="text-xs font-bold uppercase tracking-wide text-white">
+                      {cat.name}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Contact form */}
-        <section className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-10 sm:grid-cols-2">
-          <ImgBox
-            label="fotoPlant.webp — JEVOL factory floor (B&W)"
-            className="h-56 w-full sm:h-full"
-          />
-          <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-semibold text-gray-900">
-              Заповніть форму зворотного зв&apos;язку
-            </h2>
-            <p className="mb-2 text-gray-600">
-              Ми зв&apos;яжемось з вами для консультації
-            </p>
-            <ContactForm />
+        <section className="bg-white">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-16 sm:grid-cols-2 sm:py-20">
+            <ImgBox
+              label="fotoPlant.webp — JEVOL factory floor (B&W)"
+              className="h-64 w-full sm:h-full"
+            />
+            <div>
+              <h2 className="text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">
+                Заповніть форму зворотного зв&apos;язку
+              </h2>
+              <p className="mb-6 mt-3 text-zinc-600">
+                Ми зв&apos;яжемось з вами для консультації
+              </p>
+              <ContactForm />
+            </div>
           </div>
         </section>
       </main>
