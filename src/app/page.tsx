@@ -371,10 +371,6 @@ export default function Home() {
 
         {/* Play detector */}
         <section className="bg-white">
-          <ImgBox
-            label="IMG_4858.webp — pit-mounted play-detector platform"
-            className="h-72 w-full sm:h-[28rem]"
-          />
           <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
             <h2 className="max-w-3xl text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">
               Детектор люфтів ходової частини JEVOL — діагностика підвіски
@@ -401,10 +397,6 @@ export default function Home() {
 
         {/* Diagnostics combo */}
         <section className="bg-zinc-950">
-          <ImgBox
-            label="fotoStacionar1.jpeg — pit-mounted test line"
-            className="h-72 w-full sm:h-[28rem]"
-          />
           <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
             <h2 className="max-w-3xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               Комплекс діагностичних приладів JEVOL — аналіз вихлопних газів
