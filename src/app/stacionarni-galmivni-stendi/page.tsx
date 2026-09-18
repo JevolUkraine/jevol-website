@@ -188,28 +188,6 @@ export default function StationaryBrakeStandsPage() {
           </div>
         </section>
 
-        {/* Photo gallery */}
-        <section className="bg-zinc-950 py-12 sm:py-16">
-          <div className="mx-auto max-w-6xl px-4">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-5">
-              {galleryImages.map((img) => (
-                <div
-                  key={img.path}
-                  className="relative aspect-[4/3] overflow-hidden"
-                >
-                  <Image
-                    src={imageUrl(img.path)}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 20vw, (min-width: 640px) 25vw, 50vw"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Info blocks */}
         <section className="bg-white">
           <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
@@ -235,6 +213,28 @@ export default function StationaryBrakeStandsPage() {
                 <div key={f.question} className="py-6">
                   <h3 className="font-bold text-white">{f.question}</h3>
                   <p className="mt-2 text-sm text-zinc-400">{f.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Photo gallery */}
+        <section className="bg-zinc-950 py-12 sm:py-16">
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-5">
+              {galleryImages.map((img) => (
+                <div
+                  key={img.path}
+                  className="group relative aspect-[4/3] overflow-hidden shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
+                >
+                  <Image
+                    src={imageUrl(img.path)}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(min-width: 1024px) 20vw, (min-width: 640px) 25vw, 50vw"
+                  />
                 </div>
               ))}
             </div>
