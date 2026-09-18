@@ -153,14 +153,7 @@ export default function StationaryBrakeStandsPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
           <div className="relative mx-auto max-w-6xl px-4 py-16">
-            <div className="text-xs text-gray-300">
-              <Link href="/" className="hover:text-white">
-                Головна
-              </Link>{" "}
-              / <span>Прилади</span> /{" "}
-              <span className="text-white">Стаціонарні гальмівні стенди</span>
-            </div>
-            <h1 className="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+            <h1 className="max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
               УНІВЕРСАЛЬНИЙ СТАЦІОНАРНИЙ ГАЛЬМІВНИЙ СТЕНД СЕРІЇ RRT
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-gray-100">
@@ -185,6 +178,19 @@ export default function StationaryBrakeStandsPage() {
                 Завантажити PDF
               </a>
             </div>
+          </div>
+        </section>
+
+        {/* Breadcrumb */}
+        <section className="border-b border-zinc-200 bg-white">
+          <div className="mx-auto max-w-6xl px-4 py-3 text-xs text-zinc-500">
+            <Link href="/" className="hover:text-zinc-900">
+              Головна
+            </Link>{" "}
+            / <span>Прилади</span> /{" "}
+            <span className="font-semibold text-zinc-900">
+              Стаціонарні гальмівні стенди
+            </span>
           </div>
         </section>
 
