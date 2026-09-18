@@ -323,7 +323,7 @@ export default function Home() {
                 <Link
                   key={cat.name}
                   href={cat.href}
-                  className="group relative block h-48 overflow-hidden border-2 border-transparent transition-colors hover:border-orange-500"
+                  className="group relative block h-48 overflow-hidden shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
                 >
                   <Image
                     src={storageUrl("images", `${cat.imageFolder}/${cat.imagePath}`)}
