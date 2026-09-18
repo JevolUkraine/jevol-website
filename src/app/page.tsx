@@ -255,13 +255,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Photo gallery */}
-        <section className="bg-zinc-950 py-12 sm:py-16">
-          <div className="mx-auto max-w-6xl px-4">
-            <HeroGallery photos={heroSlides} featuredIndices={heroFeaturedIndices} />
-          </div>
-        </section>
-
         {/* Why JEVOL trust strip */}
         <section className="bg-white">
           <ImgBox
@@ -287,6 +280,13 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Photo gallery */}
+        <section className="bg-zinc-950 py-12 sm:py-16">
+          <div className="mx-auto max-w-6xl px-4">
+            <HeroGallery photos={heroSlides} featuredIndices={heroFeaturedIndices} />
           </div>
         </section>
 
