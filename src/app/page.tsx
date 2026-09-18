@@ -215,7 +215,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-[rgb(116,116,116)]">
+        <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-[rgb(116,116,116)]">
           <Image
             src={HERO_BG_URL}
             alt=""
@@ -226,7 +226,7 @@ export default function Home() {
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
-          <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-28">
+          <div className="relative mx-auto max-w-6xl px-4 py-12">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-200">
               Офіційний представник JEVOL в Україні
             </p>
@@ -252,9 +252,13 @@ export default function Home() {
                 Переглянути прилади
               </a>
             </div>
-            <div className="mt-16">
-              <HeroGallery photos={heroSlides} featuredIndices={heroFeaturedIndices} />
-            </div>
+          </div>
+        </section>
+
+        {/* Photo gallery */}
+        <section className="bg-zinc-950 py-12 sm:py-16">
+          <div className="mx-auto max-w-6xl px-4">
+            <HeroGallery photos={heroSlides} featuredIndices={heroFeaturedIndices} />
           </div>
         </section>
 
