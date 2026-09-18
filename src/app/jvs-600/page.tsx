@@ -139,7 +139,7 @@ export default function Jvs600Page() {
             <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="https://wa.me/380504709561"
-                className="inline-flex h-12 items-center justify-center bg-[#25D366] px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#20BD5A]"
+                className="inline-flex h-12 items-center justify-center rounded-md bg-[#25D366] px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#20BD5A]"
               >
                 Написати нам у WhatsApp
               </a>
@@ -147,7 +147,7 @@ export default function Jvs600Page() {
                 href="https://tflgmyvvavucbmcawtzv.supabase.co/storage/v1/object/public/pdfs/Smoke_%20JVS-600.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-center border-2 border-white/40 px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-white"
+                className="inline-flex h-12 items-center justify-center rounded-md border-2 border-white/40 px-8 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-white"
               >
                 Завантажити PDF
               </a>

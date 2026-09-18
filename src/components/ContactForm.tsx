@@ -66,7 +66,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="h-12 w-full bg-orange-500 text-sm font-bold uppercase tracking-wide text-zinc-950 transition-colors hover:bg-orange-400 disabled:opacity-50 sm:w-48"
+        className="h-12 w-full rounded-md bg-orange-500 text-sm font-bold uppercase tracking-wide text-zinc-950 transition-colors hover:bg-orange-400 disabled:opacity-50 sm:w-48"
       >
         {status === "submitting" ? "Надсилання…" : "Відправити"}
       </button>
