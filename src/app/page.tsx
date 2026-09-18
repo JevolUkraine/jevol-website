@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
@@ -170,6 +171,8 @@ const HERO_BUCKET = "images";
 const HERO_FOLDER = "hero-gallery";
 const heroImage = (path: string) => storageUrl(HERO_BUCKET, `${HERO_FOLDER}/${path}`);
 
+const HERO_BG_URL = storageUrl(HERO_BUCKET, "stacionarni-galmivni-stendi/23.webp");
+
 const heroSlides = [
   { path: "AutoTechService_7.webp", alt: "Стенд JEVOL на виставці «Все для техогляду»", width: 4032, height: 3024 },
   { path: "RRT-7500M.webp", alt: "Тестування вантажівки Mercedes Actros на гальмівному стенді JEVOL", width: 817, height: 647 },
@@ -212,8 +215,18 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="bg-[rgb(116,116,116)]">
-          <div className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
+        <section className="relative overflow-hidden bg-[rgb(116,116,116)]">
+          <Image
+            src={HERO_BG_URL}
+            alt=""
+            aria-hidden
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+          <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-28">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-200">
               Офіційний представник JEVOL в Україні
             </p>
