@@ -215,7 +215,7 @@ export default function StationaryBrakeStandsPage() {
               {galleryImages.map((img) => (
                 <div
                   key={img.path}
-                  className="group relative aspect-[4/3] overflow-hidden shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
+                  className="group relative aspect-[4/3] overflow-hidden rounded-lg shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
                 >
                   <Image
                     src={imageUrl(img.path)}
