@@ -325,7 +325,13 @@ export default function Home() {
                   href={cat.href}
                   className="group relative block h-48 overflow-hidden border-2 border-transparent transition-colors hover:border-orange-500"
                 >
-                  <ImgBox label="Image" className="absolute inset-0 h-full w-full" />
+                  <Image
+                    src={storageUrl("images", `${cat.imageFolder}/${cat.imagePath}`)}
+                    alt={cat.name}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(min-width: 640px) 33vw, 50vw"
+                  />
                   <div className="absolute inset-x-0 bottom-0 bg-zinc-950/80 px-4 py-3">
                     <span className="text-sm font-bold uppercase tracking-wide text-white">
                       {cat.name}
