@@ -169,7 +169,6 @@ const diagnosticsFeatures = [
 
 const HERO_BUCKET = "images";
 const HERO_FOLDER = "hero-gallery";
-const heroImage = (path: string) => storageUrl(HERO_BUCKET, `${HERO_FOLDER}/${path}`);
 
 const HERO_BG_URL = storageUrl(HERO_BUCKET, "stacionarni-galmivni-stendi/23.webp");
 
@@ -187,11 +186,38 @@ const heroSlides = [
   { path: "IMG_7891.webp", alt: "Лінія технічного контролю з диспетчерською кабіною JEVOL", width: 4032, height: 3024 },
   { path: "5.webp", alt: "Оглядова яма для гальмівного стенду JEVOL", width: 4032, height: 3024 },
   { path: "foto3.webp", alt: "Гальмівний стенд JEVOL, вигляд зверху", width: 533, height: 400 },
-].map((s) => ({ src: heroImage(s.path), alt: s.alt, width: s.width, height: s.height }));
+  {
+    path: "23.webp",
+    folder: "stacionarni-galmivni-stendi",
+    alt: "Стаціонарний гальмівний стенд JEVOL — деталь роликів",
+    width: 1280,
+    height: 720,
+  },
+  {
+    path: "63.webp",
+    folder: "stacionarni-galmivni-stendi",
+    alt: "Лабораторія техогляду зі стаціонарним гальмівним стендом JEVOL",
+    width: 4032,
+    height: 3024,
+  },
+  {
+    path: "IMG-1544.webp",
+    folder: "stacionarni-galmivni-stendi",
+    alt: "Встановлення лабораторії техогляду з гальмівним стендом JEVOL",
+    width: 4032,
+    height: 3024,
+  },
+].map((s) => ({
+  src: storageUrl(HERO_BUCKET, `${s.folder ?? HERO_FOLDER}/${s.path}`),
+  alt: s.alt,
+  width: s.width,
+  height: s.height,
+}));
 
 // Curated for the homepage display: 5 (1).webp, 5.webp, exhibition.webp,
-// foto3.webp, IMG_7891.webp — indices into heroSlides above.
-const heroFeaturedIndices = [3, 11, 4, 12, 10];
+// foto3.webp, IMG_7891.webp, then 23.webp, 63.webp, IMG-1544.webp —
+// indices into heroSlides above. 8 total for a clean 4x2 grid.
+const heroFeaturedIndices = [3, 11, 4, 12, 10, 13, 14, 15];
 
 function WhatsAppCta() {
   return (

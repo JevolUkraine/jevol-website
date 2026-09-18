@@ -33,8 +33,8 @@ export function HeroGallery({
 
   return (
     <div>
-      {/* Curated photo row */}
-      <div className="flex flex-wrap justify-center gap-2">
+      {/* Curated photo grid */}
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {featuredIndices.map((idx) => {
           const photo = photos[idx];
           return (
@@ -43,13 +43,14 @@ export function HeroGallery({
               type="button"
               onClick={() => setLightboxIndex(idx)}
               aria-label={`Переглянути фото ${idx + 1} на весь екран`}
+              className="relative aspect-[4/3] overflow-hidden border border-zinc-800"
             >
               <Image
                 src={photo.src}
                 alt={photo.alt}
-                width={photo.width}
-                height={photo.height}
-                className="h-36 w-auto border border-zinc-800 sm:h-48"
+                fill
+                className="object-cover"
+                sizes="(min-width: 640px) 25vw, 50vw"
               />
             </button>
           );
