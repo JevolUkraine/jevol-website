@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
-import { ImgBox } from "@/components/wireframe/Box";
 import { ContactForm } from "@/components/ContactForm";
+import { ContactPhoto } from "@/components/ContactPhoto";
+import { CONTACT_PHOTO_PATH } from "@/lib/images";
 
 const TITLE = "Контакти JEVOL Україна — обладнання для техогляду";
 const DESCRIPTION =
@@ -49,9 +50,17 @@ export default function ContactPage() {
           <h1 className="text-2xl font-semibold text-gray-900">Контакти</h1>
         </section>
 
-        <section className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 pb-12 sm:grid-cols-2">
+        <section
+          className={`mx-auto grid max-w-6xl gap-8 px-4 pb-12 ${
+            CONTACT_PHOTO_PATH ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"
+          }`}
+        >
           {/* Contact info + form */}
-          <div className="flex flex-col gap-6">
+          <div
+            className={`flex flex-col gap-6 ${
+              CONTACT_PHOTO_PATH ? "" : "mx-auto w-full max-w-xl"
+            }`}
+          >
             <div className="flex flex-col gap-1">
               <p className="text-lg">
                 <a
@@ -88,10 +97,7 @@ export default function ContactPage() {
           </div>
 
           {/* No map/address on the live site — reusing the same factory photo used elsewhere */}
-          <ImgBox
-            label="fotoPlant.webp — no address/map on live site"
-            className="h-64 w-full sm:h-full"
-          />
+          <ContactPhoto />
         </section>
       </main>
 

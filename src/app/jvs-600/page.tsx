@@ -4,8 +4,7 @@ import Link from "next/link";
 import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { ImgBox } from "@/components/wireframe/Box";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactSection } from "@/components/ContactSection";
 import { categories } from "@/lib/categories";
 import { storageUrl } from "@/lib/storage";
 
@@ -245,24 +244,7 @@ export default function Jvs600Page() {
           </div>
         </section>
 
-        {/* Contact form */}
-        <section className="bg-white">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-16 sm:grid-cols-2 sm:py-20">
-            <ImgBox
-              label="fotoPlant.webp — JEVOL factory floor (B&W)"
-              className="h-64 w-full sm:h-full"
-            />
-            <div>
-              <h2 className="text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">
-                Заповніть форму зворотного зв&apos;язку
-              </h2>
-              <p className="mb-6 mt-3 text-zinc-600">
-                Ми зв&apos;яжемось з вами для консультації
-              </p>
-              <ContactForm />
-            </div>
-          </div>
-        </section>
+        <ContactSection />
       </main>
 
       <Footer />
