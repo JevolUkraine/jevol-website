@@ -12,6 +12,7 @@ const HOME_TITLE =
   "Обладнання для техогляду в Україні — гальмівні стенди, димоміри, газоаналізатори | JEVOL";
 const HOME_DESCRIPTION =
   "Офіційний представник JEVOL в Україні: гальмівні стенди, газоаналізатори, димоміри, реглоскопи для техогляду СТО. Монтаж, навчання, сервіс по всій Україні.";
+const HOME_OG_IMAGE = storageUrl("images", "stacionarni-galmivni-stendi/23.webp");
 
 export const metadata: Metadata = {
   title: HOME_TITLE,
@@ -24,6 +25,13 @@ export const metadata: Metadata = {
     description: HOME_DESCRIPTION,
     url: "https://jevol.com.ua/",
     type: "website",
+    images: [{ url: HOME_OG_IMAGE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    images: [HOME_OG_IMAGE],
   },
 };
 

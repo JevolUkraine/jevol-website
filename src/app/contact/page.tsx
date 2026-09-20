@@ -5,11 +5,14 @@ import { Footer } from "@/components/wireframe/Footer";
 import { ContactForm } from "@/components/ContactForm";
 import { ContactPhoto } from "@/components/ContactPhoto";
 import { CONTACT_PHOTO_PATH } from "@/lib/images";
+import { storageUrl } from "@/lib/storage";
 
 const TITLE = "Контакти JEVOL Україна — обладнання для техогляду";
 const DESCRIPTION =
   "Зв'яжіться з JEVOL — офіційним представником обладнання для техогляду в Україні. WhatsApp, Viber, email. Консультація та замовлення обладнання для лабораторій.";
-const URL = "https://jevol.com.ua/contacts";
+const URL = "https://jevol.com.ua/contact";
+// No dedicated contact photo yet — reuse the homepage hero photo as the OG fallback.
+const OG_IMAGE = storageUrl("images", "stacionarni-galmivni-stendi/23.webp");
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -20,6 +23,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: URL,
     type: "website",
+    images: [{ url: OG_IMAGE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 

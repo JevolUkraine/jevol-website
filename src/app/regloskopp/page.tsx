@@ -12,7 +12,21 @@ const TITLE =
   "Реглоскоп JVH-M100 — контроль та налаштування світла фар для техогляду в Україні | JEVOL";
 const DESCRIPTION =
   "Реглоскоп JVH-M100 JEVOL — лазерне наведення, контроль сили світла фар та покажчиків поворотів. Відповідає ДСТУ 3649:2010. Офіційний представник в Україні.";
-const URL = "https://jevol.com.ua/regloskopp/";
+const URL = "https://jevol.com.ua/regloskopp";
+
+const STORAGE_BUCKET = "images";
+// Note: the real folder in Supabase Storage is "regloskop-jvh-m1oo" (typo'd
+// with letter "oo" instead of "00" when it was created) — using it as-is.
+const STORAGE_FOLDER = "regloskop-jvh-m1oo";
+const imageUrl = (path: string) =>
+  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
+
+const heroImage = {
+  path: "!IMG_3733.webp",
+  alt: "Реглоскоп JVH-M100 JEVOL — блок з екраном та лазерним наведенням",
+};
+
+const OG_IMAGE = imageUrl(heroImage.path);
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -23,6 +37,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: URL,
     type: "website",
+    images: [{ url: OG_IMAGE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 
@@ -86,18 +107,6 @@ const specs = [
     text: "Прилад підтримує два режими живлення — автономне живлення від батареї 9В для мобільного використання та підключення до мережі 220В для стаціонарної роботи в лабораторії.",
   },
 ];
-
-const STORAGE_BUCKET = "images";
-// Note: the real folder in Supabase Storage is "regloskop-jvh-m1oo" (typo'd
-// with letter "oo" instead of "00" when it was created) — using it as-is.
-const STORAGE_FOLDER = "regloskop-jvh-m1oo";
-const imageUrl = (path: string) =>
-  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
-
-const heroImage = {
-  path: "!IMG_3733.webp",
-  alt: "Реглоскоп JVH-M100 JEVOL — блок з екраном та лазерним наведенням",
-};
 
 const galleryImages = [
   { path: "IMG-3ed9cc1a7c29d1e49a2340031c2e9dac-V.webp", alt: "Реглоскоп JVH-M100 JEVOL — вигляд спереду" },

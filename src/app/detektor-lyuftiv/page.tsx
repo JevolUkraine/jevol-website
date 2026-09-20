@@ -12,7 +12,19 @@ const TITLE =
   "Детектор люфтів ходової частини JEVOL PDT-500/PDT-800 — купити в Україні | JEVOL";
 const DESCRIPTION =
   "Детектор люфтів JEVOL PDT-500/PDT-800 для діагностики підвіски та рульового керування авто під час техогляду в Україні. Гідравлічні платформи, рух у 8 напрямках.";
-const URL = "https://jevol.com.ua/detektor-lyuftiv/";
+const URL = "https://jevol.com.ua/detektor-lyuftiv";
+
+const STORAGE_BUCKET = "images";
+const STORAGE_FOLDER = "detektor-lyuftiv";
+const imageUrl = (path: string) =>
+  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
+
+const heroImage = {
+  path: "fotoLuft1.webp",
+  alt: "Детектор люфтів JEVOL — платформи, вмонтовані в оглядову яму",
+};
+
+const OG_IMAGE = imageUrl(heroImage.path);
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -23,6 +35,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: URL,
     type: "website",
+    images: [{ url: OG_IMAGE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 
@@ -72,16 +91,6 @@ const models = [
     pdt800: "1000 × 700 × 140 мм",
   },
 ];
-
-const STORAGE_BUCKET = "images";
-const STORAGE_FOLDER = "detektor-lyuftiv";
-const imageUrl = (path: string) =>
-  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
-
-const heroImage = {
-  path: "fotoLuft1.webp",
-  alt: "Детектор люфтів JEVOL — платформи, вмонтовані в оглядову яму",
-};
 
 const galleryImages = [
   { path: "fotoLuft2.webp", alt: "Детектор люфтів JEVOL — вигляд платформ під іншим кутом" },

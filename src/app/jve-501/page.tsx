@@ -14,6 +14,18 @@ const DESCRIPTION =
   "Газоаналізатор JVE-501 JEVOL — 5-канальний аналіз CO, CH, CO₂, O₂, NO для техогляду. Відповідає ISO/IEC 17025:2019. Офіційний представник в Україні.";
 const URL = "https://jevol.com.ua/jve-501";
 
+const STORAGE_BUCKET = "images";
+const STORAGE_FOLDER = "gazoanalizator-jve-501";
+const imageUrl = (path: string) =>
+  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
+
+const heroImage = {
+  path: "2.webp",
+  alt: "Газоаналізатор JVE-501 JEVOL на пересувному візку",
+};
+
+const OG_IMAGE = imageUrl(heroImage.path);
+
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
@@ -23,6 +35,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: URL,
     type: "website",
+    images: [{ url: OG_IMAGE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 
@@ -69,16 +88,6 @@ const specs = [
   { label: "Лямбда", value: "0.5 – 1.8" },
   { label: "Вага", value: "7 кг" },
 ];
-
-const STORAGE_BUCKET = "images";
-const STORAGE_FOLDER = "gazoanalizator-jve-501";
-const imageUrl = (path: string) =>
-  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
-
-const heroImage = {
-  path: "2.webp",
-  alt: "Газоаналізатор JVE-501 JEVOL на пересувному візку",
-};
 
 const galleryImages = [
   { path: "1.webp", alt: "Комплекс JEVOL: газоаналізатор JVE-501 та димомір JVS-600" },

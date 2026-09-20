@@ -13,6 +13,18 @@ const DESCRIPTION =
   "Димомір JVS-600 JEVOL для точного вимірювання димності дизельних двигунів під час техогляду. Відповідає ДСТУ 4276:2004. Офіційний представник в Україні.";
 const URL = "https://jevol.com.ua/jvs-600";
 
+const STORAGE_BUCKET = "images";
+const STORAGE_FOLDER = "dymomir-jvs-600";
+const imageUrl = (path: string) =>
+  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
+
+const heroImage = {
+  path: "1.webp",
+  alt: "Димомір JVS-600 JEVOL на пересувному візку",
+};
+
+const OG_IMAGE = imageUrl(heroImage.path);
+
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
@@ -22,6 +34,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: URL,
     type: "website",
+    images: [{ url: OG_IMAGE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 
@@ -66,16 +85,6 @@ const specs = [
   { label: "Габаритні розміри", value: "450 × 300 × 200 мм" },
   { label: "Вага", value: "14 кг" },
 ];
-
-const STORAGE_BUCKET = "images";
-const STORAGE_FOLDER = "dymomir-jvs-600";
-const imageUrl = (path: string) =>
-  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
-
-const heroImage = {
-  path: "1.webp",
-  alt: "Димомір JVS-600 JEVOL на пересувному візку",
-};
 
 const galleryImages = [
   { path: "2.webp", alt: "Комплекс JEVOL: газоаналізатор JVE-501 та димомір JVS-600" },

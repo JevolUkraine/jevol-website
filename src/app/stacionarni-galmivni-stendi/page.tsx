@@ -11,7 +11,19 @@ import { storageUrl } from "@/lib/storage";
 const TITLE = "Гальмівний стенд для техогляду RRT7500S — купити в Україні | JEVOL";
 const DESCRIPTION =
   "Стаціонарні гальмівні стенди JEVOL серії RRT для техогляду легкових та вантажних авто. Корундові ролики 200 000+ циклів, підтримка 4WD, вбудоване зважування. Монтаж по всій Україні. Понад 100 інсталяцій. Офіційний представник.";
-const URL = "https://jevol.com.ua/stacionarni-galmivni-stendi/";
+const URL = "https://jevol.com.ua/stacionarni-galmivni-stendi";
+
+const STORAGE_BUCKET = "images";
+const STORAGE_FOLDER = "stacionarni-galmivni-stendi";
+const imageUrl = (path: string) =>
+  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
+
+const heroImage = {
+  path: "6.webp",
+  alt: "Стаціонарний гальмівний стенд JEVOL RRT7500S — загальний вигляд",
+};
+
+const OG_IMAGE = imageUrl(heroImage.path);
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -22,6 +34,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: URL,
     type: "website",
+    images: [{ url: OG_IMAGE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 
@@ -80,16 +99,6 @@ const faqs = [
       "Дистанційне керування процесом випробування доступне з будь-якого мобільного пристрою — планшета або смартфона на базі Android. Оператор лабораторії може керувати стендом без прив'язки до стаціонарного комп'ютера.",
   },
 ];
-
-const STORAGE_BUCKET = "images";
-const STORAGE_FOLDER = "stacionarni-galmivni-stendi";
-const imageUrl = (path: string) =>
-  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
-
-const heroImage = {
-  path: "6.webp",
-  alt: "Стаціонарний гальмівний стенд JEVOL RRT7500S — загальний вигляд",
-};
 
 const galleryImages = [
   { path: "343434.webp", alt: "Тестування Volkswagen Tiguan на стаціонарному гальмівному стенді JEVOL" },

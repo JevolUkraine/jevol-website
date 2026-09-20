@@ -12,7 +12,19 @@ const TITLE =
   "Пересувні гальмівні стенди для техогляду — купити мобільний стенд в Україні | JEVOL";
 const DESCRIPTION =
   "Пересувні мобільні гальмівні стенди JEVOL для техогляду — встановлення без оглядової ями. Для легкових та вантажних авто, підтримка 4WD. Виїзна діагностика. Монтаж по всій Україні. Офіційний представник.";
-const URL = "https://jevol.com.ua/peresuvni-galmivni-stendi/";
+const URL = "https://jevol.com.ua/peresuvni-galmivni-stendi";
+
+const STORAGE_BUCKET = "images";
+const STORAGE_FOLDER = "peresuvni-galmivni-stendi";
+const imageUrl = (path: string) =>
+  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
+
+const heroImage = {
+  path: "6 (1).webp",
+  alt: "Пересувний гальмівний стенд JEVOL RRT7500M — загальний вигляд",
+};
+
+const OG_IMAGE = imageUrl(heroImage.path);
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -23,6 +35,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: URL,
     type: "website",
+    images: [{ url: OG_IMAGE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 
@@ -74,16 +93,6 @@ const faqs = [
       "Вбудована функція вимірювання вагового навантаження на кожну вісь автомобіля та кожне колесо окремо забезпечує детальну картину розподілу гальмівних зусиль — точні дані для протоколу технічного контролю.",
   },
 ];
-
-const STORAGE_BUCKET = "images";
-const STORAGE_FOLDER = "peresuvni-galmivni-stendi";
-const imageUrl = (path: string) =>
-  storageUrl(STORAGE_BUCKET, `${STORAGE_FOLDER}/${path}`);
-
-const heroImage = {
-  path: "6 (1).webp",
-  alt: "Пересувний гальмівний стенд JEVOL RRT7500M — загальний вигляд",
-};
 
 const galleryImages = [
   { path: "3.webp", alt: "Пересувний гальмівний стенд JEVOL — вигляд спереду" },
