@@ -19,7 +19,7 @@ export function ScrollToTopButton() {
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Прокрутити вгору"
-      className={`flex h-12 w-12 items-center justify-center rounded-md border border-zinc-700 bg-zinc-950 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:border-orange-500 hover:text-orange-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+      className={`flex h-[52px] w-[52px] items-center justify-center rounded-full border border-zinc-700 bg-zinc-950 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:border-orange-500 hover:text-orange-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:h-14 sm:w-14 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"
