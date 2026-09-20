@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import { ImgBox } from "@/components/wireframe/Box";
 import { ContactForm } from "@/components/ContactForm";
 import { categories } from "@/lib/categories";
@@ -159,18 +160,7 @@ export default function Jve501Page() {
           </div>
         </section>
 
-        {/* Breadcrumb */}
-        <section className="border-b border-zinc-200 bg-white">
-          <div className="mx-auto max-w-6xl px-4 py-3 text-xs text-zinc-500">
-            <Link href="/" className="hover:text-zinc-900">
-              Головна
-            </Link>{" "}
-            / <span>Прилади</span> /{" "}
-            <span className="font-semibold text-zinc-900">
-              Газоаналізатор JVE-501
-            </span>
-          </div>
-        </section>
+        <Breadcrumb current="Газоаналізатор JVE-501" />
 
         {/* FAQ */}
         <section className="bg-white">
@@ -241,7 +231,13 @@ export default function Jve501Page() {
                   href={cat.href}
                   className="group relative block h-40 overflow-hidden shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
                 >
-                  <ImgBox label="Image" className="absolute inset-0 h-full w-full transition-transform duration-300 group-hover:scale-105" />
+                  <Image
+                    src={storageUrl("images", `${cat.imageFolder}/${cat.imagePath}`)}
+                    alt={cat.name}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(min-width: 640px) 25vw, 50vw"
+                  />
                   <div className="absolute inset-x-0 bottom-0 flex h-14 items-center bg-zinc-950/80 px-3">
                     <span className="line-clamp-2 text-xs font-bold uppercase leading-tight tracking-wide text-white">
                       {cat.name}
