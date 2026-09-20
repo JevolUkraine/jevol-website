@@ -10,6 +10,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // Add old Tilda URLs here once known, e.g.:
+      // {
+      //   source: "/old-tilda-page",
+      //   destination: "/new-page",
+      //   permanent: true,
+      // },
+    ];
+  },
 };
 
 export default nextConfig;

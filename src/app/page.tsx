@@ -39,12 +39,14 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["Organization", "LocalBusiness"],
       "@id": "https://jevol.com.ua/#organization",
-      name: "JEVOL",
+      name: "Jevol Auto",
       url: "https://jevol.com.ua/",
       email: "info.jevol@gmail.com",
+      telephone: "+380-50-470-9561",
       description: HOME_DESCRIPTION,
+      areaServed: "UA",
       contactPoint: [
         {
           "@type": "ContactPoint",
