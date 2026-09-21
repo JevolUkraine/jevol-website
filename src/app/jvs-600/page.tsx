@@ -168,9 +168,12 @@ export default function Jvs600Page() {
         <Breadcrumb current="Димомір JVS-600" />
 
         {/* FAQ */}
-        <section className="bg-zinc-950">
+        <section className="bg-white">
           <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-            <FaqAccordion items={faqs} />
+            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">
+              Поширені запитання
+            </h2>
+            <FaqAccordion items={faqs} theme="light" className="mt-10" />
           </div>
         </section>
 

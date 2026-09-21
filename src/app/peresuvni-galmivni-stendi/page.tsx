@@ -234,7 +234,7 @@ export default function MobileBrakeStandsPage() {
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               Технічні характеристики пересувного гальмівного стенду JEVOL
             </h2>
-            <FaqAccordion items={faqs} className="mt-10" />
+            <FaqAccordion items={faqs} theme="dark" className="mt-10" />
           </div>
         </section>
 
