@@ -401,9 +401,9 @@ export default function Home() {
                   <p className="mt-1 text-sm text-zinc-600">{item.text}</p>
                 </div>
               ))}
-            </div>
-            <div className="mt-10">
-              <WhatsAppCta />
+              <div className="flex items-center">
+                <WhatsAppCta />
+              </div>
             </div>
           </div>
         </section>
