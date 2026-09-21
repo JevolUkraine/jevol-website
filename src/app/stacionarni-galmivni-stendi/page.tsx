@@ -250,7 +250,7 @@ export default function StationaryBrakeStandsPage() {
                 <Link
                   key={cat.name}
                   href={cat.href}
-                  className="group relative block h-40 overflow-hidden shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
+                  className="group relative block h-40 overflow-hidden rounded-lg shadow-[0_0_16px_rgba(255,255,255,0.25)] transition-shadow duration-300 hover:shadow-none"
                 >
                   <Image
                     src={storageUrl("images", `${cat.imageFolder}/${cat.imagePath}`)}

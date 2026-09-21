@@ -54,7 +54,7 @@ export function MobileNav() {
       </button>
 
       {menuOpen && (
-        <div className="absolute inset-x-0 top-full z-40 border-t border-zinc-800 bg-zinc-950 shadow-xl">
+        <div className="absolute inset-x-0 top-full z-40 overflow-hidden rounded-b-lg border-t border-zinc-800 bg-zinc-950 shadow-xl">
           <nav className="flex flex-col px-4 py-2 text-sm font-semibold uppercase tracking-wide text-zinc-300">
             <Link
               href="/"

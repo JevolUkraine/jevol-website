@@ -10,7 +10,7 @@ export function ContactPhoto({
   if (!CONTACT_PHOTO_PATH) return null;
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative overflow-hidden rounded-lg ${className}`}>
       <Image
         src={storageUrl("images", CONTACT_PHOTO_PATH)}
         alt="JEVOL — виробництво"

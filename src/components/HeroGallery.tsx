@@ -113,7 +113,7 @@ export function HeroGallery({
             alt={photos[lightboxIndex].alt}
             width={photos[lightboxIndex].width}
             height={photos[lightboxIndex].height}
-            className="max-h-[90vh] max-w-[90vw] object-contain"
+            className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain"
             onClick={(e) => e.stopPropagation()}
           />
 

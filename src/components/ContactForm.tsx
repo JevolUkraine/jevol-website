@@ -40,7 +40,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "h-12 w-full border-2 border-zinc-300 bg-white px-4 text-sm text-zinc-900 outline-none transition-colors focus:border-orange-500";
+    "h-12 w-full rounded-lg border-2 border-zinc-300 bg-white px-4 text-sm text-zinc-900 outline-none transition-colors focus:border-orange-500";
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -57,7 +57,7 @@ export function ContactForm() {
         required
         placeholder="Ваше питання:"
         rows={4}
-        className="w-full border-2 border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition-colors focus:border-orange-500"
+        className="w-full rounded-lg border-2 border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition-colors focus:border-orange-500"
       />
       <label className="flex items-start gap-2 text-xs text-zinc-500">
         <input type="checkbox" name="consent" required className="mt-0.5" />

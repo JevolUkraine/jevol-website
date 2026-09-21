@@ -120,7 +120,7 @@ export function CategoriesDropdown() {
 
       <div
         onKeyDown={onPanelKeyDown}
-        className={`absolute left-0 top-full z-40 mt-2 w-80 origin-top rounded-md border border-zinc-800 bg-zinc-950 normal-case tracking-normal text-zinc-300 shadow-xl transition-all duration-150 ease-out motion-reduce:transition-none ${
+        className={`absolute left-0 top-full z-40 mt-2 w-80 origin-top rounded-lg border border-zinc-800 bg-zinc-950 normal-case tracking-normal text-zinc-300 shadow-xl transition-all duration-150 ease-out motion-reduce:transition-none ${
           open
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-1 opacity-0"
