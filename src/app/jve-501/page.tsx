@@ -5,6 +5,7 @@ import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ContactSection } from "@/components/ContactSection";
+import { FaqAccordion } from "@/components/FaqAccordion";
 import { categories } from "@/lib/categories";
 import { storageUrl } from "@/lib/storage";
 
@@ -171,16 +172,9 @@ export default function Jve501Page() {
         <Breadcrumb current="Газоаналізатор JVE-501" />
 
         {/* FAQ */}
-        <section className="bg-white">
+        <section className="bg-zinc-950">
           <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-            <div className="grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
-              {faqs.map((f) => (
-                <div key={f.question} className="border-l-2 border-orange-500 pl-4">
-                  <h2 className="font-bold text-zinc-950">{f.question}</h2>
-                  <p className="mt-1 text-sm text-zinc-600">{f.answer}</p>
-                </div>
-              ))}
-            </div>
+            <FaqAccordion items={faqs} />
           </div>
         </section>
 

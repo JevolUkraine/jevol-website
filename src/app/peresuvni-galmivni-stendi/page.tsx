@@ -5,6 +5,7 @@ import { Header } from "@/components/wireframe/Header";
 import { Footer } from "@/components/wireframe/Footer";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ContactSection } from "@/components/ContactSection";
+import { FaqAccordion } from "@/components/FaqAccordion";
 import { categories } from "@/lib/categories";
 import { storageUrl } from "@/lib/storage";
 
@@ -233,14 +234,7 @@ export default function MobileBrakeStandsPage() {
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               Технічні характеристики пересувного гальмівного стенду JEVOL
             </h2>
-            <div className="mt-10 flex flex-col divide-y divide-zinc-800">
-              {faqs.map((f) => (
-                <div key={f.question} className="py-6">
-                  <h3 className="font-bold text-white">{f.question}</h3>
-                  <p className="mt-2 text-sm text-zinc-400">{f.answer}</p>
-                </div>
-              ))}
-            </div>
+            <FaqAccordion items={faqs} className="mt-10" />
           </div>
         </section>
 
