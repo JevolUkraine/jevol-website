@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { CategoriesDropdown } from "@/components/CategoriesDropdown";
+import { MobileNav } from "@/components/MobileNav";
 
 export function Header() {
   return (
-    <header className="border-b border-zinc-800 bg-zinc-950">
+    <header className="relative border-b border-zinc-800 bg-zinc-950">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:py-5">
         <Link
           href="/"
@@ -14,19 +16,20 @@ export function Header() {
           <Link href="/" className="transition-colors hover:text-white">
             Головна
           </Link>
-          <Link href="/#categories" className="transition-colors hover:text-white">
-            Прилади
-          </Link>
+          <CategoriesDropdown />
           <Link href="/contact" className="transition-colors hover:text-white">
             Контакти
           </Link>
         </nav>
-        <a
-          href="https://wa.me/380504709561"
-          className="inline-flex h-10 shrink-0 items-center justify-center rounded-md bg-[#25D366] px-4 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#20BD5A] sm:px-5"
-        >
-          WhatsApp
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href="https://wa.me/380504709561"
+            className="inline-flex h-10 shrink-0 items-center justify-center rounded-md bg-[#25D366] px-4 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#20BD5A] sm:px-5"
+          >
+            WhatsApp
+          </a>
+          <MobileNav />
+        </div>
       </div>
     </header>
   );
