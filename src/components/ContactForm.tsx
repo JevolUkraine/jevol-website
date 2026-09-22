@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { supabase } from "@/lib/supabase";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+const DEFAULT_ERROR = "Сталася помилка. Спробуйте ще раз.";
+
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState(DEFAULT_ERROR);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -15,20 +17,35 @@ export function ContactForm() {
 
     setStatus("submitting");
 
-    const { error } = await supabase.from("contact_submissions").insert({
-      name: data.get("name"),
-      phone: data.get("phone"),
-      email: data.get("email"),
-      message: data.get("message"),
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          phone: data.get("phone"),
+          email: data.get("email"),
+          message: data.get("message"),
+          consent: data.get("consent") === "on",
+          // Honeypot — left blank by real users, hidden from view.
+          company: data.get("company"),
+        }),
+      });
 
-    if (error) {
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || !result?.ok) {
+        setErrorMessage(result?.error || DEFAULT_ERROR);
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+      form.reset();
+    } catch {
+      setErrorMessage(DEFAULT_ERROR);
       setStatus("error");
-      return;
     }
-
-    setStatus("success");
-    form.reset();
   }
 
   if (status === "success") {
@@ -59,6 +76,14 @@ export function ContactForm() {
         rows={4}
         className="w-full rounded-lg border-2 border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition-colors focus:border-orange-500"
       />
+      <input
+        type="text"
+        name="company"
+        autoComplete="off"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="absolute left-[-9999px] h-0 w-0 opacity-0"
+      />
       <label className="flex items-start gap-2 text-xs text-zinc-500">
         <input type="checkbox" name="consent" required className="mt-0.5" />
         Погоджуюсь з обробкою персональних даних
@@ -71,9 +96,7 @@ export function ContactForm() {
         {status === "submitting" ? "Надсилання…" : "Відправити"}
       </button>
       {status === "error" && (
-        <p className="text-sm font-semibold text-red-600">
-          Сталася помилка. Спробуйте ще раз.
-        </p>
+        <p className="text-sm font-semibold text-red-600">{errorMessage}</p>
       )}
     </form>
   );
