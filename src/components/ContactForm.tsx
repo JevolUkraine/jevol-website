@@ -8,6 +8,20 @@ type Status = "idle" | "submitting" | "success" | "error";
 const DEFAULT_ERROR = "Сталася помилка. Спробуйте ще раз.";
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
+// TEMPORARY DEBUG — remove once the double success/error state is diagnosed.
+// Logs how many live Cloudflare challenge iframes exist in the DOM at each
+// Turnstile lifecycle event, so we can see whether a second widget appears
+// mid-verification (and correlate the timing against onError/etc.).
+function logTurnstileState(label: string) {
+  if (typeof document === "undefined") return;
+  const iframeCount = document.querySelectorAll(
+    'iframe[src*="challenges.cloudflare.com"]',
+  ).length;
+  console.log(
+    `[Turnstile] ${label} — iframes in DOM: ${iframeCount} @ ${new Date().toISOString()}`,
+  );
+}
+
 export function ContactForm({
   theme = "light",
 }: {
@@ -117,20 +131,24 @@ export function ContactForm({
           ref={turnstileRef}
           siteKey={TURNSTILE_SITE_KEY!}
           options={{ theme, language: "uk" }}
-          onSuccess={(token) => setTurnstileToken(token)}
+          // TEMPORARY DEBUG — remove once the double success/error state is diagnosed.
+          onWidgetLoad={(widgetId) =>
+            logTurnstileState(`onWidgetLoad id=${widgetId}`)
+          }
+          onSuccess={(token) => {
+            logTurnstileState("onSuccess");
+            setTurnstileToken(token);
+          }}
           onError={(errorCode) => {
-            // TEMPORARY DEBUG — remove once the double success/error state is diagnosed.
-            console.log("[Turnstile] onError code:", errorCode);
+            logTurnstileState(`onError code=${errorCode}`);
             setTurnstileToken(null);
           }}
-          onExpire={() => setTurnstileToken(null)}
-          // TEMPORARY DEBUG — remove once the double success/error state is diagnosed.
-          onBeforeInteractive={() =>
-            console.log("[Turnstile] onBeforeInteractive")
-          }
-          onAfterInteractive={() =>
-            console.log("[Turnstile] onAfterInteractive")
-          }
+          onExpire={() => {
+            logTurnstileState("onExpire");
+            setTurnstileToken(null);
+          }}
+          onBeforeInteractive={() => logTurnstileState("onBeforeInteractive")}
+          onAfterInteractive={() => logTurnstileState("onAfterInteractive")}
         />
       )}
       <button
