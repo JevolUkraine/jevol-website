@@ -1,14 +1,27 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 const DEFAULT_ERROR = "Сталася помилка. Спробуйте ще раз.";
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
-export function ContactForm() {
+export function ContactForm({
+  theme = "light",
+}: {
+  theme?: "light" | "dark";
+} = {}) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState(DEFAULT_ERROR);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileInstance>(null);
+
+  function resetTurnstile() {
+    turnstileRef.current?.reset();
+    setTurnstileToken(null);
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,6 +42,7 @@ export function ContactForm() {
           consent: data.get("consent") === "on",
           // Honeypot — left blank by real users, hidden from view.
           company: data.get("company"),
+          turnstileToken,
         }),
       });
 
@@ -37,14 +51,17 @@ export function ContactForm() {
       if (!response.ok || !result?.ok) {
         setErrorMessage(result?.error || DEFAULT_ERROR);
         setStatus("error");
+        resetTurnstile();
         return;
       }
 
       setStatus("success");
       form.reset();
+      resetTurnstile();
     } catch {
       setErrorMessage(DEFAULT_ERROR);
       setStatus("error");
+      resetTurnstile();
     }
   }
 
@@ -58,6 +75,13 @@ export function ContactForm() {
 
   const inputClass =
     "h-12 w-full rounded-lg border-2 border-zinc-300 bg-white px-4 text-sm text-zinc-900 outline-none transition-colors focus:border-orange-500";
+
+  // Turnstile is optional in environments where the site key isn't
+  // configured (e.g. local dev without Cloudflare set up) — the widget is
+  // simply skipped and the submit button isn't gated by it.
+  const turnstileRequired = Boolean(TURNSTILE_SITE_KEY);
+  const canSubmit =
+    status !== "submitting" && (!turnstileRequired || Boolean(turnstileToken));
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -88,9 +112,19 @@ export function ContactForm() {
         <input type="checkbox" name="consent" required className="mt-0.5" />
         Погоджуюсь з обробкою персональних даних
       </label>
+      {turnstileRequired && (
+        <Turnstile
+          ref={turnstileRef}
+          siteKey={TURNSTILE_SITE_KEY!}
+          options={{ theme }}
+          onSuccess={(token) => setTurnstileToken(token)}
+          onError={() => setTurnstileToken(null)}
+          onExpire={() => setTurnstileToken(null)}
+        />
+      )}
       <button
         type="submit"
-        disabled={status === "submitting"}
+        disabled={!canSubmit}
         className="h-12 w-full rounded-md bg-orange-500 text-sm font-bold uppercase tracking-wide text-zinc-950 transition-colors hover:bg-orange-400 disabled:opacity-50 sm:w-48"
       >
         {status === "submitting" ? "Надсилання…" : "Відправити"}

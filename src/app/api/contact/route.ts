@@ -56,17 +56,41 @@ type ContactPayload = {
   consent?: unknown;
   // Honeypot field — real users never fill this in.
   company?: unknown;
+  turnstileToken?: unknown;
 };
+
+async function isTurnstileVerified(token: string, ip: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) {
+    console.warn(
+      "Contact form: TURNSTILE_SECRET_KEY is not set — skipping Turnstile verification.",
+    );
+    return true;
+  }
+  if (!token) return false;
+
+  try {
+    const params = new URLSearchParams({ secret, response: token });
+    if (ip && ip !== "unknown") params.set("remoteip", ip);
+
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params,
+      },
+    );
+    const data = (await res.json()) as { success?: boolean };
+    return data.success === true;
+  } catch (err) {
+    console.error("Contact form: Turnstile verification request failed", err);
+    return false;
+  }
+}
 
 export async function POST(request: Request) {
   const ip = getClientIp(request);
-
-  if (!checkRateLimit(ip)) {
-    return NextResponse.json(
-      { ok: false, error: "Забагато запитів. Спробуйте, будь ласка, пізніше." },
-      { status: 429 },
-    );
-  }
 
   let body: ContactPayload;
   try {
@@ -75,6 +99,27 @@ export async function POST(request: Request) {
     return NextResponse.json(
       { ok: false, error: "Некоректний запит." },
       { status: 400 },
+    );
+  }
+
+  // Turnstile check comes first — it's the cheapest reject, before we do
+  // any rate-limit bookkeeping, honeypot checks, or field validation.
+  const turnstileToken =
+    typeof body.turnstileToken === "string" ? body.turnstileToken : "";
+  if (!(await isTurnstileVerified(turnstileToken, ip))) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "Не вдалося підтвердити, що ви не бот. Спробуйте ще раз.",
+      },
+      { status: 400 },
+    );
+  }
+
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { ok: false, error: "Забагато запитів. Спробуйте, будь ласка, пізніше." },
+      { status: 429 },
     );
   }
 
