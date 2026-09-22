@@ -48,6 +48,7 @@ next-env.d.ts
 # local secrets / notes (never commit)
 /Pass storage supabase.txt
 /Коды.txt
+/ClaeudFare Keys.txt
 
 # claude code local state
 /.claude/
