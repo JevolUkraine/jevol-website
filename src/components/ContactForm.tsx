@@ -116,10 +116,21 @@ export function ContactForm({
         <Turnstile
           ref={turnstileRef}
           siteKey={TURNSTILE_SITE_KEY!}
-          options={{ theme }}
+          options={{ theme, language: "uk" }}
           onSuccess={(token) => setTurnstileToken(token)}
-          onError={() => setTurnstileToken(null)}
+          onError={(errorCode) => {
+            // TEMPORARY DEBUG — remove once the double success/error state is diagnosed.
+            console.log("[Turnstile] onError code:", errorCode);
+            setTurnstileToken(null);
+          }}
           onExpire={() => setTurnstileToken(null)}
+          // TEMPORARY DEBUG — remove once the double success/error state is diagnosed.
+          onBeforeInteractive={() =>
+            console.log("[Turnstile] onBeforeInteractive")
+          }
+          onAfterInteractive={() =>
+            console.log("[Turnstile] onAfterInteractive")
+          }
         />
       )}
       <button
