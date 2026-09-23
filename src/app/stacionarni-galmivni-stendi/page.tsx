@@ -118,6 +118,29 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Головна",
+          item: "https://jevol.com.ua/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Прилади",
+          item: "https://jevol.com.ua/#categories",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Стаціонарні гальмівні стенди",
+          item: URL,
+        },
+      ],
+    },
+    {
       "@type": "Product",
       name: "Універсальний роликовий гальмівний стенд RRT7500S",
       description: DESCRIPTION,

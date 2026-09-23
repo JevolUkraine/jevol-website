@@ -98,6 +98,29 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Головна",
+          item: "https://jevol.com.ua/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Прилади",
+          item: "https://jevol.com.ua/#categories",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Газоаналізатор JVE-501",
+          item: URL,
+        },
+      ],
+    },
+    {
       "@type": "Product",
       name: "Газоаналізатор JVE-501",
       description: DESCRIPTION,
